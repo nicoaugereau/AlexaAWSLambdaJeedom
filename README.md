@@ -19,5 +19,13 @@ Getting started
 - Create an empty lambda function
 - Download the zip from this repository in the Amazon Developer Console
 - Add the Alexa Skill kit trigger and set it up with the Alexa Skill ID
-- Enter the AWS ID in the Alexa console.
-- Add your Jeedom configuration to 'config.js' file
+- Enter the AWS ID in the Alexa console
+- Add your Jeedom configuration to 'config.js' file. Adapt sentences for English or French
+
+Testing (English)
+- Tell Alexa "Alexa open Freebox Devialet" (Freebox Devialet is the skill invocation name)
+- And tell "turn on the light of the kitchen"
+
+Tester (Français
+- Demander à Alexa "Alexa ouvre Freebox Devialet" (Freebox Devialet est le nom d'invocation du skill)
+- Et demander "Allume la lumière de la cuisine"
