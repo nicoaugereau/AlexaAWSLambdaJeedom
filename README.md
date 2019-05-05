@@ -20,4 +20,4 @@ Getting started
 - Download the zip from this repository in the Amazon Developer Console
 - Add the Alexa Skill kit trigger and set it up with the Alexa Skill ID
 - Enter the AWS ID in the Alexa console.
-
+- Add your Jeedom configuration to 'config.js' file
