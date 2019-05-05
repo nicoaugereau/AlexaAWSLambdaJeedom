@@ -4,8 +4,8 @@ This repository allows you to control home automation objects with Alexa (Freebo
 
 Prerequisites
 -------------
-- Alexa developer account\
-- AWS developer account\
+- Alexa developer account
+- AWS developer account
 - Freebox Devialet or Alexa product (Echo, Dot)
 
 
