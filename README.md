@@ -9,6 +9,7 @@ Prerequisites
 - Alexa developer account
 - AWS developer account
 - Freebox Devialet or Alexa product (Echo, Dot)
+- Raspberry and Jeedom installed with https
 
 
 Getting started
