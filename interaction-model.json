@@ -1,0 +1,156 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "freebox devialet",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "lightIntent",
+                    "slots": [
+                        {
+                            "name": "room",
+                            "type": "place"
+                        },
+                        {
+                            "name": "OnOff",
+                            "type": "action"
+                        }
+                    ],
+                    "samples": [
+                        "{OnOff} la lumière de l' {room}",
+                        "{OnOff} les lumières de la {room}",
+                        "{OnOff} la lumière de la {room}",
+                        "{OnOff} les lumières du {room}",
+                        "{OnOff} la lumière du {room}"
+                    ]
+                },
+                {
+                    "name": "doorIntent",
+                    "slots": [
+                        {
+                            "name": "OnOff",
+                            "type": "action"
+                        },
+                        {
+                            "name": "room",
+                            "type": "place"
+                        }
+                    ],
+                    "samples": [
+                        "{OnOff} la porte de l' {room}",
+                        "{OnOff} les portes de la {room}",
+                        "{OnOff} la porte de la {room}",
+                        "{OnOff} les portes du {room}",
+                        "{OnOff} la porte du {room}"
+                    ]
+                },
+                {
+                    "name": "wallplugIntent",
+                    "slots": [
+                        {
+                            "name": "OnOff",
+                            "type": "action"
+                        },
+                        {
+                            "name": "room",
+                            "type": "place"
+                        }
+                    ],
+                    "samples": [
+                        "{OnOff} la prise de l' {room}",
+                        "{OnOff} les prises de la {room}",
+                        "{OnOff} la prise de la {room}",
+                        "{OnOff} les prises du {room}",
+                        "{OnOff} la prise du {room}",
+                        "{OnOff} l'interrupteur de l' {room}",
+                        "{OnOff} les interrupteurs de la {room}",
+                        "{OnOff} l'interrupteur de la {room}",
+                        "{OnOff} les interrupteurs du {room}",
+                        "{OnOff} l'interrupteur du {room}"
+                    ]
+                },
+                {
+                    "name": "windowIntent",
+                    "slots": [
+                        {
+                            "name": "OnOff",
+                            "type": "action"
+                        },
+                        {
+                            "name": "room",
+                            "type": "place"
+                        }
+                    ],
+                    "samples": [
+                        "{OnOff} la fenêtre de l' {room}",
+                        "{OnOff} les fenêtres de la {room}",
+                        "{OnOff} la fenêtre de la {room}",
+                        "{OnOff} les fenêtres du {room}",
+                        "{OnOff} la fenêtre du {room}"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "action",
+                    "values": [
+                        {
+                            "id": "close",
+                            "name": {
+                                "value": "Ferme"
+                            }
+                        },
+                        {
+                            "id": "open",
+                            "name": {
+                                "value": "Ouvre"
+                            }
+                        },
+                        {
+                            "id": "turnOff",
+                            "name": {
+                                "value": "Eteins"
+                            }
+                        },
+                        {
+                            "id": "turnOn",
+                            "name": {
+                                "value": "Allume"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "place",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "chambre"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "salon"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
