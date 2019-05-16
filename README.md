@@ -17,12 +17,12 @@ Getting started
 - Open Alexa Developer Console and Create Skill
 - Copy the file 'interaction-model.json' in JSON editor
 - Save
-- Build the model
 - Open AWS Developer console
 - Create an empty lambda function
 - Download the zip from this repository in the Amazon Developer Console
 - Add the Alexa Skill kit trigger and set it up with the Alexa Skill ID
 - Enter the AWS ID in the Alexa console
+- Build the model
 - Add your Jeedom configuration to 'config.js' file. Adapt sentences for English or French
 
 Testing (English)
