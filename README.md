@@ -1,4 +1,4 @@
-![NodeJS version](https://img.shields.io/badge/node-v8.10-green.svg)
+![NodeJS version](https://img.shields.io/badge/node-v8.10-green.svg) ![Dev status](https://img.shields.io/badge/status-development-orange.svg)
 
 # Freebox Devialet and Alexa AWS Lambda assistant control for Jeedom
 
