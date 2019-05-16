@@ -29,6 +29,6 @@ Testing (English)
 - Tell Alexa "Alexa open Freebox Devialet" (Freebox Devialet is the skill invocation name)
 - And tell "turn on the light of the kitchen"
 
-Tester (Français
+Tester (Français)
 - Demander à Alexa "Alexa ouvre Freebox Devialet" (Freebox Devialet est le nom d'invocation du skill)
 - Et demander "Allume la lumière de la cuisine"
