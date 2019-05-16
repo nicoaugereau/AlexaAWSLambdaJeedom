@@ -15,7 +15,7 @@ Prerequisites
 Getting started
 -------------
 - Open Alexa Developer Console and Create Skill
-- Copy the file 'inteaction-model.json' in JSON editor
+- Copy the file 'interaction-model.json' in JSON editor
 - Save
 - Build the model
 - Open AWS Developer console
