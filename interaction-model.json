@@ -1,7 +1,7 @@
 {
     "interactionModel": {
         "languageModel": {
-            "invocationName": "freebox devialet",
+            "invocationName": "devialet",
             "intents": [
                 {
                     "name": "AMAZON.CancelIntent",
@@ -112,25 +112,25 @@
                         {
                             "id": "close",
                             "name": {
-                                "value": "Ferme"
+                                "value": "ferme"
                             }
                         },
                         {
                             "id": "open",
                             "name": {
-                                "value": "Ouvre"
+                                "value": "ouvre"
                             }
                         },
                         {
                             "id": "turnOff",
                             "name": {
-                                "value": "Eteins"
+                                "value": "éteins"
                             }
                         },
                         {
                             "id": "turnOn",
                             "name": {
-                                "value": "Allume"
+                                "value": "allume"
                             }
                         }
                     ]
@@ -138,6 +138,71 @@
                 {
                     "name": "place",
                     "values": [
+                        {
+                            "name": {
+                                "value": "terrain"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "maison"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "buanderie"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "salle de bain"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "bureau"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "allée"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "séjour"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "entrée"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "cour"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "jardin"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "cellier"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "garage"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "cuisine"
+                            }
+                        },
                         {
                             "name": {
                                 "value": "chambre"
