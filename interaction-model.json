@@ -20,7 +20,7 @@
                     "samples": []
                 },
                 {
-                    "name": "lightIntent",
+                    "name": "light",
                     "slots": [
                         {
                             "name": "room",
@@ -40,7 +40,7 @@
                     ]
                 },
                 {
-                    "name": "doorIntent",
+                    "name": "door",
                     "slots": [
                         {
                             "name": "OnOff",
@@ -60,7 +60,7 @@
                     ]
                 },
                 {
-                    "name": "wallplugIntent",
+                    "name": "wallplug",
                     "slots": [
                         {
                             "name": "OnOff",
@@ -85,7 +85,7 @@
                     ]
                 },
                 {
-                    "name": "windowIntent",
+                    "name": "window",
                     "slots": [
                         {
                             "name": "OnOff",
@@ -103,6 +103,35 @@
                         "{OnOff} les fenêtres du {room}",
                         "{OnOff} la fenêtre du {room}"
                     ]
+                },
+                {
+                    "name": "scenario",
+                    "slots": [
+                        {
+                            "name": "action",
+                            "type": "action"
+                        },
+                        {
+                            "name": "scenarioId",
+                            "type": "AMAZON.NUMBER"
+                        }
+                    ],
+                    "samples": [
+                        "{action} le scenario {scenarioId}"
+                    ]
+                },
+                {
+                    "name": "housemode",
+                    "slots": [
+                        {
+                            "name": "mode",
+                            "type": "mode"
+                        }
+                    ],
+                    "samples": [
+                        "passe la maison en mode {mode}",
+                        "mets la maison en mode {mode}"
+                    ]
                 }
             ],
             "types": [
@@ -110,27 +139,81 @@
                     "name": "action",
                     "values": [
                         {
+                            "id": "deactive",
+                            "name": {
+                                "value": "désactive",
+                                "synonyms": [
+                                    "désactiver"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "active",
+                            "name": {
+                                "value": "active",
+                                "synonyms": [
+                                    "activer"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "play",
+                            "name": {
+                                "value": "exécute",
+                                "synonyms": [
+                                    "lance",
+                                    "démarrer",
+                                    "lancer",
+                                    "exécuter",
+                                    "démarre"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "stop",
+                            "name": {
+                                "value": "stoppe",
+                                "synonyms": [
+                                    "stopper",
+                                    "arrêter",
+                                    "arrête"
+                                ]
+                            }
+                        },
+                        {
                             "id": "close",
                             "name": {
-                                "value": "ferme"
+                                "value": "ferme",
+                                "synonyms": [
+                                    "fermer"
+                                ]
                             }
                         },
                         {
                             "id": "open",
                             "name": {
-                                "value": "ouvre"
+                                "value": "ouvre",
+                                "synonyms": [
+                                    "ouvrir"
+                                ]
                             }
                         },
                         {
                             "id": "turnOff",
                             "name": {
-                                "value": "éteins"
+                                "value": "éteins",
+                                "synonyms": [
+                                    "éteindre"
+                                ]
                             }
                         },
                         {
                             "id": "turnOn",
                             "name": {
-                                "value": "allume"
+                                "value": "allume",
+                                "synonyms": [
+                                    "allumer"
+                                ]
                             }
                         }
                     ]
@@ -211,6 +294,31 @@
                         {
                             "name": {
                                 "value": "salon"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "mode",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "surveillance"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "vacances"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "nuit"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "jour"
                             }
                         }
                     ]
