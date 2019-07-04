@@ -1,18 +1,3 @@
-/* 
-Original code : https://github.com/ORevelat/AlexaSkillAskJeedom
-
-index.js
-V1.0
-- initial skill
-V1.1
-- modifying intents
-V1.2
-- rework index.js
-V1.3 
-- adding scenario capabilities
-*/
-//-----------------------------------------------------------------------------
-
 'use strict';
 
 const config = require('./config');
@@ -34,19 +19,11 @@ const messages = {
 //-----------------------------------------------------------------------------
 function getCommand(place, action, intent)
 {
-	//let room = config.cmds.find((t) => t.place == place);
-	//let room = config.cmds.find((t) => {t.place == place, t.intent == intent});
     let room = config.cmds.find((t) => t.place == place + '_' + intent);
 	if (room && room.cmd && room.cmd[action])
 		return Promise.resolve(room.cmd[action]);
 
     return Promise.reject('désolé l\'emplacement ' + place + ' et l\'intention ' + intent +' ne prennent pas en charge l\'action ' + action);
-    
-    // for V1.4
-    //obj = JSON.parse(json);
-    //let obj = JSON.stringify(json, null, '\t');
-
-
 }
 
 function doRequest(id, type, json = true)
@@ -122,9 +99,7 @@ function handleRequest(intent) {
         case "door":
         case "wallPlug":
         case "window":
-            //if (name != "lightIntent")
-	        //	return Promise.reject('désolé seul les lumières sont supportés');
-	        
+   
             reqType = 'cmd';
 
 	        try {
