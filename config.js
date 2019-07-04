@@ -57,5 +57,21 @@ module.exports = {
                 'état': 85,
             }
         }
+    ],
+    scenarios: [
+        {
+            id: 5,
+            name: '',
+            type: '',
+            category: 'scenario',
+            description: 'scenario mode nuit',
+            intent: '',
+            scenario: {
+                'exécute': 'start',
+                'stoppe': 'stop',
+                'active': 'activate',
+                'désactive': 'deactivate',
+            }
+        }
     ]
 };
