@@ -97,6 +97,7 @@
                         }
                     ],
                     "samples": [
+                        "{OnOff} les fenêtres de l' {room}",
                         "{OnOff} la fenêtre de l' {room}",
                         "{OnOff} les fenêtres de la {room}",
                         "{OnOff} la fenêtre de la {room}",
@@ -131,6 +132,48 @@
                     "samples": [
                         "passe la maison en mode {mode}",
                         "mets la maison en mode {mode}"
+                    ]
+                },
+                {
+                    "name": "curtain",
+                    "slots": [
+                        {
+                            "name": "OnOff",
+                            "type": "action"
+                        },
+                        {
+                            "name": "room",
+                            "type": "place"
+                        }
+                    ],
+                    "samples": [
+                        "{OnOff} les rideaux du {room}",
+                        "{OnOff} les rideaux de l' {room}",
+                        "{OnOff} les rideaux de la {room}",
+                        "{OnOff} le rideau de la {room}",
+                        "{OnOff} le rideau du {room}",
+                        "{OnOff} le rideau de l' {room}"
+                    ]
+                },
+                {
+                    "name": "shutter",
+                    "slots": [
+                        {
+                            "name": "OnOff",
+                            "type": "action"
+                        },
+                        {
+                            "name": "room",
+                            "type": "place"
+                        }
+                    ],
+                    "samples": [
+                        "{OnOff} le volet du {room}",
+                        "{OnOff} le volet de l' {room}",
+                        "{OnOff} le volet de la {room}",
+                        "{OnOff} les volets du {room}",
+                        "{OnOff} les volets de l' {room}",
+                        "{OnOff} les volets de la {room}"
                     ]
                 }
             ],
@@ -185,6 +228,7 @@
                             "name": {
                                 "value": "ferme",
                                 "synonyms": [
+                                    "fermeture",
                                     "fermer"
                                 ]
                             }
@@ -194,6 +238,7 @@
                             "name": {
                                 "value": "ouvre",
                                 "synonyms": [
+                                    "ouverture",
                                     "ouvrir"
                                 ]
                             }
@@ -223,6 +268,16 @@
                     "values": [
                         {
                             "name": {
+                                "value": "débarras"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "escalier"
+                            }
+                        },
+                        {
+                            "name": {
                                 "value": "terrain"
                             }
                         },
@@ -238,7 +293,10 @@
                         },
                         {
                             "name": {
-                                "value": "salle de bain"
+                                "value": "salle de bain",
+                                "synonyms": [
+                                    "salle d'eau"
+                                ]
                             }
                         },
                         {
@@ -303,7 +361,12 @@
                     "values": [
                         {
                             "name": {
-                                "value": "surveillance"
+                                "value": "présent"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "absent"
                             }
                         },
                         {
