@@ -1,7 +1,6 @@
 'use strict';
 
 const config = require('./config');
-//const config = require('./config.json');
 const request = require('./request');
 
 const messages = {
@@ -16,19 +15,22 @@ const messages = {
     ERROR_ACTION_SCENARIO: 'désolé l\'action n\'a pas été trouvée. Vous pouvez demander stoppe, arrête, lance, exécute, démarre, active, désactive.',
     ERROR_SCENARIO_ID: 'désoélé le scenario n\'a pa été trouvé'
 };
+
 //-----------------------------------------------------------------------------
+
 function getCommand(place, action, intent)
 {
-    let room = config.cmds.find((t) => t.place == place + '_' + intent);
+	//let room = config.cmds.find((t) => t.place == place);
+	//let room = config.cmds.find((t) => {t.place == place, t.intent == intent});
+	let room = config.cmds.find((t) => t.place == place + '_' + intent);
 	if (room && room.cmd && room.cmd[action])
 		return Promise.resolve(room.cmd[action]);
 
-    return Promise.reject('désolé l\'emplacement ' + place + ' et l\'intention ' + intent +' ne prennent pas en charge l\'action ' + action);
+	return Promise.reject('désolé l\'emplacement ' + place + ' et l\'intention ' + intent +' ne prennent pas en charge l\'action ' + action);
 }
 
 function doRequest(id, type, json = true)
 {
-    // Query for command : http://#IP_JEEDOM#/core/api/jeeApi.php?apikey=#APIKEY#&type=cmd&id=#ID#
 	return request({
 		host: config.jeedom.host,
 		port: config.jeedom.port,
@@ -43,27 +45,26 @@ function doRequest(id, type, json = true)
 
 function getScenario(id, action) 
 {
-    //Query for scenario : http://#IP_JEEDOM#/core/api/jeeApi.php?apikey=#APIKEY#&type=scenario&id=#ID#&action=#ACTION#
-       let scenarioId = config.scenarios.find((t) => t.id == id);
-       if (scenarioId && scenarioId.scenario && scenarioId.scenario[action])
-           return Promise.resolve(scenarioId.scenario[action]);
-   
-       return Promise.reject('désolé le scenario ' + id + ' ne prend pas en charge l\'action ' + action);
-   }
-   
+    let scenarioId = config.scenarios.find((t) => t.id == id);
+    if (scenarioId && scenarioId.scenario && scenarioId.scenario[action])
+		return Promise.resolve(scenarioId.scenario[action]);
+
+    return Promise.reject('désolé le scenario ' + id + ' ne prend pas en charge l\'action ' + action);
+}
+
 function doRequestScn(action, id, type, json = true)
 {
-    return request({
-       host: config.jeedom.host,
-        port: config.jeedom.port,
-       path: config.jeedom.path,
-       json
-        }, {
-        'apikey': config.jeedom.apikey,
-        'type': type,
-        'id': id,
-        'action': action
-   });
+	return request({
+		host: config.jeedom.host,
+		port: config.jeedom.port,
+		path: config.jeedom.path,
+		json
+		}, {
+		 'apikey': config.jeedom.apikey,
+		 'type': type,
+		 'id': id,
+		 'action': action
+	});
 }
 
 function createResponse(text, shouldEndSession = true) {
@@ -99,7 +100,11 @@ function handleRequest(intent) {
         case "door":
         case "wallPlug":
         case "window":
-   
+        case "curtain":
+        case "shutter":
+            //if (name != "lightIntent")
+	        //	return Promise.reject('désolé seul les lumières sont supportés');
+	        
             reqType = 'cmd';
 
 	        try {
@@ -157,9 +162,6 @@ function handleRequest(intent) {
 				.then((c) => doRequestScn(c, scenarioId, reqType, false))
 				.then(() => createResponse([ "très bien", "oui", "compris", "je m'en occupe" ][Math.floor(Math.random() * 4)]) );
         break;
-        case "homemode":
-            reqType = 'scenario';
-        break;
     }
 }
 
@@ -167,7 +169,7 @@ exports.handler = (event, context, callback) => {
 	
     switch (event.request.type) {
         case "LaunchRequest":
-            context.succeed(createResponse(messages.WELCOME, false));
+            context.succeed(createResponse("Welcome to Freebox Devialet Assistant.", false));
         break;
         case "IntentRequest":
         	handleRequest(event.request.intent)
