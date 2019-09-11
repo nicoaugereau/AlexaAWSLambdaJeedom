@@ -165,9 +165,19 @@
                         {
                             "name": "room",
                             "type": "place"
+                        },
+                        {
+                            "name": "slider",
+                            "type": "AMAZON.NUMBER"
                         }
                     ],
                     "samples": [
+                        "{OnOff} les volets de l' {room} à {slider} pourcent",
+                        "{OnOff} les volets de la {room} à {slider} pourcent",
+                        "{OnOff} les volets du {room} à {slider} pourcent",
+                        "{OnOff} le volet de la {room} à {slider} pourcent",
+                        "{OnOff} le volet de l' {room} à {slider} pourcent",
+                        "{OnOff} le volet du {room} à {slider} pourcent",
                         "{OnOff} le volet du {room}",
                         "{OnOff} le volet de l' {room}",
                         "{OnOff} le volet de la {room}",
@@ -228,6 +238,8 @@
                             "name": {
                                 "value": "ferme",
                                 "synonyms": [
+                                    "baisser",
+                                    "baisse",
                                     "fermeture",
                                     "fermer"
                                 ]
@@ -238,6 +250,8 @@
                             "name": {
                                 "value": "ouvre",
                                 "synonyms": [
+                                    "monter",
+                                    "monte",
                                     "ouverture",
                                     "ouvrir"
                                 ]
