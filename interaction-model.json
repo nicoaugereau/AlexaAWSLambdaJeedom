@@ -282,6 +282,11 @@
                     "values": [
                         {
                             "name": {
+                                "value": "Salle à manger"
+                            }
+                        },
+                        {
+                            "name": {
                                 "value": "débarras"
                             }
                         },
