@@ -192,6 +192,15 @@
                     "name": "action",
                     "values": [
                         {
+                            "id": "put",
+                            "name": {
+                                "value": "mets",
+                                "synonyms": [
+                                    "mettre"
+                                ]
+                            }
+                        },
+                        {
                             "id": "deactive",
                             "name": {
                                 "value": "désactive",
