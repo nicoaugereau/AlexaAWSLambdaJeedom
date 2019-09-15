@@ -10,8 +10,8 @@ module.exports = {
     cmds: [
         {
             description: '1 lumière du salon',
-            place: 'salon_lightIntent',
-            intent: 'lightIntent',
+            place: 'salon_light',
+            intent: 'light',
             cmd: {
                 'allume': 86,
                 'éteins': 87,
@@ -20,8 +20,8 @@ module.exports = {
         },
         {
             description: 'fenêtres du salon',
-            place: 'salon_windowIntent',
-            intent: 'windowIntent',
+            place: 'salon_window',
+            intent: 'window',
             cmd: {
                 'ouvre': 86,
                 'ferme': 87,
@@ -30,8 +30,8 @@ module.exports = {
         },
         {
             description: 'prises du salon',
-            place: 'salon_wallPlugIntent',
-            intent: 'wallPlugIntent',
+            place: 'salon_wallPlug',
+            intent: 'wallPlug',
             cmd: {
                 'allume': 86,
                 'éteins': 87,
@@ -39,22 +39,15 @@ module.exports = {
             }
         },
         {
-            place: 'salle de bain',
-            intent: 'windowIntent',
+            description: 'Volet salon',
+            place: 'salon_shutter',
+            intent: 'shutter',
             cmd: {
-                'on': 266,
-                'off': 267,
-                'state': 268,
-            }
-        },
-        {
-            description: 'toutes les lumières',
-            place: 'maison_wallPlugIntent',
-            intent: 'wallPlugIntent',
-            cmd: {
-                'allume': 86,
-                'éteins': 87,
-                'état': 85,
+                'ouvre': 127,
+                'ferme': 126,
+                'état': 124,
+                'stoppe': 131,
+                'mets': 125,
             }
         }
     ],
