@@ -33,7 +33,8 @@ Object:
 - Tell Alexa "Alexa open Devialet" (Devialet is the skill invocation name) and tell "turn on the light of the kitchen"
 - Or, tell "Alexa ask Devialet to turn on the light of the kitchen"
 - "Alexa ask Devialet to open the shutter of the kitchen"
-- "Alexa ask Devialet to put the kitchen shutter at 40 %"  
+- "Alexa ask Devialet to put the kitchen shutter at 40 %"
+  
 Scenario:
 - "Alexa ask Devialet to execute scenario 4"
 
@@ -42,6 +43,7 @@ Objet :
 - Demander à Alexa "Alexa ouvre Devialet" (Devialet est le nom d'invocation du skill) et demander "Allume la lumière de la cuisine"
 - Ou, "Alexa demande à Devialet d'allumer la lumière de la cuisine"
 - "Alexa demande à Devialet d'ouvrir le volet de la cuisine"
-- "Alexa demande à Devialet d'ouvrir le volet de la cuisine à 40 %"  
+- "Alexa demande à Devialet d'ouvrir le volet de la cuisine à 40 %"
+  
 Scenario :
 - "Alexa demande à Devialet d'exécuter le scenario 4"
