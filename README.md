@@ -28,7 +28,7 @@ Getting started
 - Build the model
 - Add your Jeedom configuration to 'config.js' file. Adapt sentences for English or French
 
-Invoke the skill:__
+Invoke the skill:  
 Object:
 - Tell Alexa "Alexa open Devialet" (Devialet is the skill invocation name) and tell "turn on the light of the kitchen"
 - Or, tell "Alexa ask Devialet to turn on the light of the kitchen"
@@ -37,7 +37,7 @@ Object:
 Scenario:
 - "Alexa ask Devialet to execute scenario 4"
 
-Invoker le skill :__
+Invoker le skill :  
 Objet :
 - Demander à Alexa "Alexa ouvre Devialet" (Devialet est le nom d'invocation du skill) et demander "Allume la lumière de la cuisine"
 - Ou, "Alexa demande à Devialet d'allumer la lumière de la cuisine"
