@@ -120,7 +120,6 @@ function handleRequest(intent)
     switch (intentName) {
         case "light":
         case "door":
-        case "wallPlug":
         case "window":
         case "curtain":
         case "shutter":
@@ -147,6 +146,39 @@ function handleRequest(intent)
                         slider = 100-sliderValue;
                     	console.log("slider = " + slider);
 		        }
+	        }
+	        
+	        catch (err) {
+		        return Promise.reject(messages.ERROR);
+	        }
+	        if (action == null) {
+		        return Promise.reject(messages.ERROR_ACTION);
+	        } else if (place == null) {
+                return Promise.reject(messages.ERROR_PLACE);
+            }
+            
+            return getCommand(place, action, intentName)
+                .then(console.log("Sending object command and request"))
+                .then((c) => doRequest(c, reqType, slider, false))
+				.then(() => createResponse([ "très bien", "oui", "compris", "je m'en occupe" ][Math.floor(Math.random() * 4)]) );
+        break;
+	case "wallPlug":
+	 console.log("Getting intent name = " + intentName);
+	        
+            reqType = 'cmd';
+
+	        try {
+                let actionValue = intent.slots.OnOff.resolutions.resolutionsPerAuthority[0];
+                let placeValue = intent.slots.room.resolutions.resolutionsPerAuthority[0];
+
+		if (actionValue.values) {
+			action = actionValue.values[0].value.name;
+			console.log("Action value =" + action);
+		}
+		if (placeValue.values) {
+			place = placeValue.values[0].value.name;
+			console.log("Place value = " + place);
+		     }
 	        }
 	        
 	        catch (err) {
