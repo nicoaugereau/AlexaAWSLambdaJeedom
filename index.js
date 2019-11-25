@@ -32,8 +32,6 @@ function getCommand(place, action, intent)
 function doRequest(id, type, slider, json = true)
 {
     console.log("Getting command request");
-    // Query for command : http://#IP_JEEDOM#/core/api/jeeApi.php?apikey=#APIKEY#&type=cmd&id=#ID#
-    // Query for command with shutter slider : http://#IP_JEEDOM#/core/api/jeeApi.php?apikey=#APIKEY#&type=cmd&id=#ID#value=#SLIDER#
     if (slider) {
         console.log("Getting command request with slider value. Id = " + id + " type =  " + type + " slider = " + slider);
         return request({
@@ -88,8 +86,7 @@ function doRequestScn(action, id, type, json = true)
 	});
 }
 
-function createResponse(text, shouldEndSession = true) 
-{
+function createResponse(text, shouldEndSession = true) {
     console.log("Creating response");
 	let response = {
 		"version": "1.0",
@@ -103,11 +100,12 @@ function createResponse(text, shouldEndSession = true)
 		  "shouldEndSession": shouldEndSession
 		}
 	  };
+
 	  return response;
 }
 
-function handleRequest(intent) 
-{
+function handleRequest(intent) {
+    
     console.log("Handle request");
     
     let intentName = intent.name;
@@ -123,7 +121,6 @@ function handleRequest(intent)
         case "window":
         case "curtain":
         case "shutter":
-	        
 	    console.log("Getting intent name = " + intentName);
 	        
             reqType = 'cmd';
@@ -142,7 +139,7 @@ function handleRequest(intent)
 			        console.log("Place value = " + place);
 		        }
 		        if (sliderValue) {
-                    	console.log("Slider value = " + sliderValue);
+                    console.log("Slider value = " + sliderValue);
                         slider = 100-sliderValue;
                     	console.log("slider = " + slider);
 		        }
@@ -151,6 +148,7 @@ function handleRequest(intent)
 	        catch (err) {
 		        return Promise.reject(messages.ERROR);
 	        }
+
 	        if (action == null) {
 		        return Promise.reject(messages.ERROR_ACTION);
 	        } else if (place == null) {
@@ -162,8 +160,8 @@ function handleRequest(intent)
                 .then((c) => doRequest(c, reqType, slider, false))
 				.then(() => createResponse([ "très bien", "oui", "compris", "je m'en occupe" ][Math.floor(Math.random() * 4)]) );
         break;
-	case "wallPlug":
-	 console.log("Getting intent name = " + intentName);
+        case "wallplug":
+            console.log("Getting intent name = " + intentName);
 	        
             reqType = 'cmd';
 
@@ -171,19 +169,20 @@ function handleRequest(intent)
                 let actionValue = intent.slots.OnOff.resolutions.resolutionsPerAuthority[0];
                 let placeValue = intent.slots.room.resolutions.resolutionsPerAuthority[0];
 
-		if (actionValue.values) {
-			action = actionValue.values[0].value.name;
-			console.log("Action value =" + action);
-		}
-		if (placeValue.values) {
-			place = placeValue.values[0].value.name;
-			console.log("Place value = " + place);
-		     }
+		        if (actionValue.values) {
+			        action = actionValue.values[0].value.name;
+			        console.log("Action value =" + action);
+		        }
+		        if (placeValue.values) {
+			        place = placeValue.values[0].value.name;
+			        console.log("Place value = " + place);
+		        }
 	        }
 	        
 	        catch (err) {
 		        return Promise.reject(messages.ERROR);
 	        }
+
 	        if (action == null) {
 		        return Promise.reject(messages.ERROR_ACTION);
 	        } else if (place == null) {
@@ -220,6 +219,7 @@ function handleRequest(intent)
 	        catch (err) {
 		        return Promise.reject(messages.ERROR_ACTION_SCENARIO);
             }
+            
             
             return getScenario(scenarioId, action)
                 .then(console.log("Sending scenario command and request"))
