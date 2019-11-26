@@ -1,18 +1,17 @@
 /*
     Alexa Skill Interaction for Jeedom
-    Skill Version : 1.0
+    Skill Version : 1.3
     Author : Nicolas Augereau
     Licence : MIT
 */
 
 'use strict';
 
+//const jsonData = require('./config.json');
 const config = require('./config');
 const request = require('./request');
 
-const locale = event.request.locale;
-
-const fr_FR = {
+let fr = {
     WELCOME: 'Bienvenue sur l\'assistant Freebox Devialet',
     WHAT_DO_YOU_WANT: 'Que vouliez-vous dire ?',
     UNHANDLED: 'Désolé cette skill n\'est pas prise en charge.',
@@ -24,7 +23,7 @@ const fr_FR = {
     ERROR_ACTION_SCENARIO: 'désolé l\'action n\'a pas été trouvée. Vous pouvez demander stoppe, arrête, lance, exécute, démarre, active, désactive.',
     ERROR_SCENARIO_ID: 'désoélé le scenario n\'a pa été trouvé'
 };
-const en_GB = {
+let en = {
     WELCOME: 'Welcome to Freebox Devialet Assistant',
     WHAT_DO_YOU_WANT: 'What did you want to say?',
     UNHANDLED: 'Désolé cette skill n\'est pas prise en charge.',
@@ -36,6 +35,24 @@ const en_GB = {
     ERROR_ACTION_SCENARIO: 'désolé l\'action n\'a pas été trouvée. Vous pouvez demander stoppe, arrête, lance, exécute, démarre, active, désactive.',
     ERROR_SCENARIO_ID: 'sorry i did not find the scenario'
 };
+let globalResourceData = {
+    'en-US': en,
+    'en-GB': en,
+    'en-CA': en,
+    'en-AU': en,
+    'fr-FR': fr
+};
+
+function resourceData(request) {
+    let DEFAULT_LOCALE = 'en-US';
+    if (request !== undefined && request.locale !== undefined) {
+        var locale = request.locale;
+    }
+    else {
+        var locale = DEFAULT_LOCALE;
+    }
+    return globalResourceData[locale];
+}
 
 function getRequest(type, action, intent, place)
 {
@@ -48,7 +65,7 @@ function getRequest(type, action, intent, place)
             if (scenarioId && scenarioId.scenario && scenarioId.scenario[action])
                 return Promise.resolve(scenarioId.scenario[action]);
             
-            return Promise.reject('désolé le scenario ' + id + ' ne prend pas en charge l\'action ' + action);
+            return Promise.reject('désolé le scenario ' + intent + ' ne prend pas en charge l\'action ' + action);
         case "cmd":
             let room = config.cmds.find((t) => t.place == place + '_' + intent);
             console.log("getCommand function. action = " + action + " place = " + place + " intent = " + intent);
@@ -59,7 +76,6 @@ function getRequest(type, action, intent, place)
         case "interact":
         case "variable":
     }
-    
 }
 
 function jeeQuery(type, id, value, json = true)
@@ -81,13 +97,13 @@ function jeeQuery(type, id, value, json = true)
                     'action': value
             });
         case "cmd":
-            if (slider) {
-            console.log("Getting command request with slider value. Id = " + id + " type =  " + type + " slider = " + value);
-            return request({
-                host: config.jeedom.host,
-                port: config.jeedom.port,
-                path: config.jeedom.path,
-                json
+            if (value) {
+                console.log("Getting command request with slider value. Id = " + id + " type =  " + type + " slider = " + value);
+                return request({
+                    host: config.jeedom.host,
+                    port: config.jeedom.port,
+                    path: config.jeedom.path,
+                    json
                 }, {
                     'apikey': config.jeedom.apikey,
                     'type': type,
@@ -126,7 +142,6 @@ function createResponse(text, shouldEndSession = true) {
 		  "shouldEndSession": shouldEndSession
 		}
 	  };
-
 	  return response;
 }
 
@@ -171,12 +186,12 @@ function handleRequest(intent) {
 	        }
 	        
 	        catch (err) {
-		        return Promise.reject(locale.ERROR);
+		        return Promise.reject(resourceData(request).ERROR);
 	        }
 	        if (action == null) {
-		        return Promise.reject(locale.ERROR_ACTION);
+		        return Promise.reject(resourceData(request).ERROR_ACTION);
 	        } else if (place == null) {
-                return Promise.reject(locale.ERROR_PLACE);
+                return Promise.reject(resourceData(request).ERROR_PLACE);
             }
             
             return getRequest(reqType, action, intentName, place)
@@ -203,12 +218,12 @@ function handleRequest(intent) {
 	        }
 	        
 	        catch (err) {
-		        return Promise.reject(locale.ERROR);
+		        return Promise.reject(resourceData(request).ERROR);
 	        }
 	        if (action == null) {
-		        return Promise.reject(locale.ERROR_ACTION);
+		        return Promise.reject(resourceData(request).ERROR_ACTION);
 	        } else if (place == null) {
-                return Promise.reject(locale.ERROR_PLACE);
+                return Promise.reject(resourceData(request).ERROR_PLACE);
             }
             
             return getRequest(reqType, action, intentName, place)
@@ -226,7 +241,7 @@ function handleRequest(intent) {
             	}
             }
             catch (err) {
-            	return Promise.reject(locale.ERROR_SCENARIO_ID);
+            	return Promise.reject(resourceData(request).ERROR_SCENARIO_ID);
     		}
 
             try {
@@ -237,7 +252,7 @@ function handleRequest(intent) {
 		        }
 	        }
 	        catch (err) {
-		        return Promise.reject(locale.ERROR_ACTION_SCENARIO);
+		        return Promise.reject(resourceData(request).ERROR_ACTION_SCENARIO);
             }
             
             
@@ -247,21 +262,21 @@ function handleRequest(intent) {
 				.then(() => createResponse([ "très bien", "oui", "compris", "je m'en occupe" ][Math.floor(Math.random() * 4)]) );
         break;
         default:
-            context.succeed(createResponse(locale.HELP));
+            context.succeed(createResponse(resourceData(request).HELP));
     }
     console.log("End dialog with Alexa Freebox Devialet and Jeedom");
 }
 
 exports.handler = (event, context, callback) => {
-    
-    switch (event.request.type) {
+    let request = event.request;
+    switch (request.type) {
         case "LaunchRequest":
             console.log("Openning Freebox Devialet");
-            context.succeed(createResponse(locale.WELCOME, false));
+            context.succeed(createResponse(resourceData(request).WELCOME, false));
         break;
         case "IntentRequest":
             console.log("Starting dialog with Alexa Freebox Devialet and Jeedom");
-        	handleRequest(event.request.intent)
+        	handleRequest(request.intent)
         		.then((response) => callback(null, response))
 		        .catch((err) => {
 			    	callback(null, createResponse(err));
