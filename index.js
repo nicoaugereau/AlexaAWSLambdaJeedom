@@ -7,7 +7,6 @@
 
 'use strict';
 
-//const jsonData = require('./config.json');
 const config = require('./config');
 const request = require('./request');
 
@@ -67,7 +66,7 @@ function getRequest(type, action, intent, place)
             if (scenarioId && scenarioId.scenario && scenarioId.scenario[action])
                 return Promise.resolve(scenarioId.scenario[action]);
             
-            return Promise.reject('désolé le scenario ' + intent + ' ne prend pas en charge l\'action ' + action);
+            return Promise.reject('désolé le scenario ' + place + ' ne prend pas en charge l\'action ' + action);
         case "cmd":
             let room = config.cmds.find((t) => t.place == place + '_' + intent);
             console.log("getCommand function. action = " + action + " place = " + place + " intent = " + intent);
@@ -258,7 +257,7 @@ function handleRequest(intent) {
             }
             
             
-            return getRequest(reqType, action, intentName, place)
+            return getRequest(reqType, action, intentName, scenarioId)
                 .then(console.log("Sending scenario command and request"))
                 .then((c) => jeeQuery(reqType, scenarioId, c, false))
 				.then(() => createResponse([ resourceData(request).MULTIPLE_RESPONSES ][Math.floor(Math.random() * 4)]) );
