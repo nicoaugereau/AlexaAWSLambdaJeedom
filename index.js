@@ -1,6 +1,6 @@
 /*
     Alexa Skill Interaction for Jeedom
-    Skill Version : 1.3
+    Skill Version : 1.0
     Author : Nicolas Augereau
     Licence : MIT
 */
