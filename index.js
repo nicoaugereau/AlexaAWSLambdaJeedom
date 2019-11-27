@@ -33,15 +33,20 @@ let en = {
     ERROR_ACTION: 'Sorry i did not understand the action',
     ERROR_PLACE: 'Sorry i did not understand the place',
     ERROR_ACTION_SCENARIO: 'Sorry the action wasn\'t found. You can request stop, stop, start, run, execute, start, enable, disable.',
-    ERROR_SCENARIO_ID: 'sorry i did not find the scenario',
+    ERROR_SCENARIO_ID: 'Sorry i did not find the scenario',
     MULTIPLE_RESPONSES: ["yes", "ok", "I will handle it"]
 };
 let globalResourceData = {
-    'en-US': en,
-    'en-GB': en,
-    'en-CA': en,
     'en-AU': en,
-    'fr-FR': fr
+    'en-CA': en,
+    'en-GB': en,
+    'en-US': en,
+    'fr-BE': fr,
+    'fr-CA': fr,
+    'fr-CH': fr,
+    'fr-FR': fr,
+    'fr-LU': fr,
+    'fr-MC': fr
 };
 
 function resourceData(request) {
@@ -62,7 +67,7 @@ function getRequest(type, action, intent, place)
     switch (type) {
         case "scenario":
             console.log("Getting Jeedom scenario informations");
-            let scenarioId = config.scenarios.find((t) => t.place == place);
+            let scenarioId = config.scenarios.find((t) => t.id == place);
             if (scenarioId && scenarioId.scenario && scenarioId.scenario[action])
                 return Promise.resolve(scenarioId.scenario[action]);
             
