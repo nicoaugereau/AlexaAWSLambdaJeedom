@@ -21,7 +21,7 @@ let fr = {
     ERROR_PLACE: 'Désolé je n\'ai pas compris l\'emplacement',
     ERROR_ACTION_SCENARIO: 'Désolé l\'action n\'a pas été trouvée. Vous pouvez demander stoppe, arrête, lance, exécute, démarre, active, désactive.',
     ERROR_SCENARIO_ID: 'Désolé le scenario n\'a pa été trouvé',
-    MULTIPLE_RESPONSES: '"très bien", "oui", "compris", "je m\'en occupe"'
+    MULTIPLE_RESPONSES: ["oui", "très bien", "je m\'en occupe"]
 };
 let en = {
     WELCOME: 'Welcome to Freebox Devialet Assistant',
@@ -34,7 +34,7 @@ let en = {
     ERROR_PLACE: 'Sorry i did not understand the place',
     ERROR_ACTION_SCENARIO: 'Sorry the action wasn\'t found. You can request stop, stop, start, run, execute, start, enable, disable.',
     ERROR_SCENARIO_ID: 'sorry i did not find the scenario',
-    MULTIPLE_RESPONSES: '"yes", "ok", "I will handle it"'
+    MULTIPLE_RESPONSES: ["yes", "ok", "I will handle it"]
 };
 let globalResourceData = {
     'en-US': en,
@@ -198,7 +198,7 @@ function handleRequest(intent) {
             return getRequest(reqType, action, intentName, place)
                 .then(console.log("Sending object command and request"))
                 .then((c) => jeeQuery(reqType, c, slider, false))
-				.then(() => createResponse([ resourceData(request).MULTIPLE_RESPONSES ][Math.floor(Math.random() * 4)]) );
+				.then(() => createResponse( resourceData(request).MULTIPLE_RESPONSES[Math.floor(Math.random() * resourceData(request).MULTIPLE_RESPONSES.length)] ));
         break;
         case "wallplug":
             console.log("Getting intent name = " + intentName);
@@ -230,7 +230,7 @@ function handleRequest(intent) {
             return getRequest(reqType, action, intentName, place)
                 .then(console.log("Sending object command and request"))
                 .then((c) => jeeQuery(reqType, c, slider, false))
-				.then(() => createResponse([ "très bien", "oui", "compris", "je m'en occupe" ][Math.floor(Math.random() * 4)]) );
+				.then(() => createResponse( resourceData(request).MULTIPLE_RESPONSES[Math.floor(Math.random() * resourceData(request).MULTIPLE_RESPONSES.length)] ));
         break;
         case "scenario":
             console.log("Getting intent name = " + intentName);
@@ -260,7 +260,7 @@ function handleRequest(intent) {
             return getRequest(reqType, action, intentName, scenarioId)
                 .then(console.log("Sending scenario command and request"))
                 .then((c) => jeeQuery(reqType, scenarioId, c, false))
-				.then(() => createResponse([ resourceData(request).MULTIPLE_RESPONSES ][Math.floor(Math.random() * 4)]) );
+				.then(() => createResponse( resourceData(request).MULTIPLE_RESPONSES[Math.floor(Math.random() * resourceData(request).MULTIPLE_RESPONSES.length)] ));
         break;
         default:
             context.succeed(createResponse(resourceData(request).HELP));
