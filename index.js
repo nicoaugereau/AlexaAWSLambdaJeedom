@@ -62,7 +62,7 @@ function getRequest(type, action, intent, place)
     switch (type) {
         case "scenario":
             console.log("Getting Jeedom scenario informations");
-            let scenarioId = config.scenarios.find((t) => t.id == intent);
+            let scenarioId = config.scenarios.find((t) => t.place == place);
             if (scenarioId && scenarioId.scenario && scenarioId.scenario[action])
                 return Promise.resolve(scenarioId.scenario[action]);
             
