@@ -47,10 +47,10 @@ Objects supported:
 - Shutters
 
 Invoke the skill:  
-Scenario:
+Scenario example:
 - "Alexa ask Devialet to start scenario 4"
 
-Command:
+Command examples:
 - Tell Alexa "Alexa open Devialet" (Devialet is the skill invocation name) and tell "turn on the light of the kitchen"
 - Or, tell "Alexa ask Devialet to turn on the light of the kitchen"
 - "Alexa ask Devialet to open the shutter of the kitchen"
