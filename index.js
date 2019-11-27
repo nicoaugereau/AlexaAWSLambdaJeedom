@@ -15,25 +15,27 @@ let fr = {
     WELCOME: 'Bienvenue sur l\'assistant Freebox Devialet',
     WHAT_DO_YOU_WANT: 'Que vouliez-vous dire ?',
     UNHANDLED: 'Désolé cette skill n\'est pas prise en charge.',
-    HELP: 'Désolée je n\'ai pas pu répondre à votre demande. Vous pouvez me demander par exemple : Alexa demande à Devialer d\'allumer la lumière de la cuisine, ou ferme le volet du salon, ou encore baisse le volet à 20%.',
+    HELP: 'Désolé je n\'ai pas pu répondre à votre demande. Vous pouvez me demander par exemple : Alexa demande à Devialet d\'allumer la lumière de la cuisine, ou ferme le volet du salon, ou encore baisse le volet à 20%.',
     STOP: 'Au revoir. Merci pour avoir utilisé l\'assistant Freebox Devialet !',
     ERROR: 'Désolé il y a eu une erreur',
-    ERROR_ACTION: 'désolé je n\'ai pas compris l\'action',
-    ERROR_PLACE: 'désolé je n\'ai pas compris l\'emplacement',
-    ERROR_ACTION_SCENARIO: 'désolé l\'action n\'a pas été trouvée. Vous pouvez demander stoppe, arrête, lance, exécute, démarre, active, désactive.',
-    ERROR_SCENARIO_ID: 'désoélé le scenario n\'a pa été trouvé'
+    ERROR_ACTION: 'Désolé je n\'ai pas compris l\'action',
+    ERROR_PLACE: 'Désolé je n\'ai pas compris l\'emplacement',
+    ERROR_ACTION_SCENARIO: 'Désolé l\'action n\'a pas été trouvée. Vous pouvez demander stoppe, arrête, lance, exécute, démarre, active, désactive.',
+    ERROR_SCENARIO_ID: 'Désolé le scenario n\'a pa été trouvé',
+    MULTIPLE_RESPONSES: '"très bien", "oui", "compris", "je m\'en occupe"'
 };
 let en = {
     WELCOME: 'Welcome to Freebox Devialet Assistant',
     WHAT_DO_YOU_WANT: 'What did you want to say?',
-    UNHANDLED: 'Désolé cette skill n\'est pas prise en charge.',
-    HELP: 'Désolée je n\'ai pas pu répondre à votre demande. Vous pouvez me demander par exemple : Alexa demande à Devialer d\'allumer la lumière de la cuisine, ou ferme le volet du salon, ou encore baisse le volet à 20%.',
+    UNHANDLED: 'Sorry this skill is not supported.',
+    HELP: 'Sorry I couldn\'t answer your request. You can ask me for example: Alexa asks Devialet to turn on the kitchen light, or closes the living room shutter, or lowers the shutter to 20%.',
     STOP: 'Bye! Thanks for using the Freebox Devialet Assistant!',
-    ERROR: 'Désolé il y a eu une erreur',
-    ERROR_ACTION: 'sorry i did not understand the action',
-    ERROR_PLACE: 'sory i did not understand the place',
-    ERROR_ACTION_SCENARIO: 'désolé l\'action n\'a pas été trouvée. Vous pouvez demander stoppe, arrête, lance, exécute, démarre, active, désactive.',
-    ERROR_SCENARIO_ID: 'sorry i did not find the scenario'
+    ERROR: 'Sorry there was something wrong',
+    ERROR_ACTION: 'Sorry i did not understand the action',
+    ERROR_PLACE: 'Sorry i did not understand the place',
+    ERROR_ACTION_SCENARIO: 'Sorry the action wasn\'t found. You can request stop, stop, start, run, execute, start, enable, disable.',
+    ERROR_SCENARIO_ID: 'sorry i did not find the scenario',
+    MULTIPLE_RESPONSES: '"yes", "ok", "I will handle it"'
 };
 let globalResourceData = {
     'en-US': en,
@@ -197,7 +199,7 @@ function handleRequest(intent) {
             return getRequest(reqType, action, intentName, place)
                 .then(console.log("Sending object command and request"))
                 .then((c) => jeeQuery(reqType, c, slider, false))
-				.then(() => createResponse([ "très bien", "oui", "compris", "je m'en occupe" ][Math.floor(Math.random() * 4)]) );
+				.then(() => createResponse([ resourceData(request).MULTIPLE_RESPONSES ][Math.floor(Math.random() * 4)]) );
         break;
         case "wallplug":
             console.log("Getting intent name = " + intentName);
@@ -259,7 +261,7 @@ function handleRequest(intent) {
             return getRequest(reqType, action, intentName, place)
                 .then(console.log("Sending scenario command and request"))
                 .then((c) => jeeQuery(reqType, scenarioId, c, false))
-				.then(() => createResponse([ "très bien", "oui", "compris", "je m'en occupe" ][Math.floor(Math.random() * 4)]) );
+				.then(() => createResponse([ resourceData(request).MULTIPLE_RESPONSES ][Math.floor(Math.random() * 4)]) );
         break;
         default:
             context.succeed(createResponse(resourceData(request).HELP));
