@@ -33,7 +33,7 @@ This skill is design for French language.
 **Capabilities**
 -------------
 You can ask Alexa to invoke Jeedom API methods:
-- Scenario: start, stop, active, deactive
+- Scenario: start, stop, activate, deactive
 - Command: turn on, turn off, open, close, slider (%), status
 - Interact:
 - Variable: setup, status
