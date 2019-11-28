@@ -24,6 +24,7 @@ This skill is design for French language.
 - Save
 - Open AWS Developer console
 - Create an empty lambda function
+- Select Execution : Node.js 8.10
 - Download the zip from this repository in the Amazon Developer Console
 - Add the Alexa Skill kit trigger and set it up with the Alexa Skill ID
 - Enter the AWS ID in the Alexa console
