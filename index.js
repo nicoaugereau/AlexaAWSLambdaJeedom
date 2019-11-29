@@ -50,7 +50,7 @@ let globalResourceData = {
 };
 
 function resourceData(request) {
-    let DEFAULT_LOCALE = 'en-US';
+    let DEFAULT_LOCALE = 'fr-FR';
     if (request !== undefined && request.locale !== undefined) {
         var locale = request.locale;
     }
@@ -71,16 +71,15 @@ function getRequest(type, action, intent, place)
             if (scenarioId && scenarioId.scenario && scenarioId.scenario[action])
                 return Promise.resolve(scenarioId.scenario[action]);
             
-            return Promise.reject('désolé le scenario ' + place + ' ne prend pas en charge l\'action ' + action);
+            return Promise.reject(resourceData(request).ERROR_ACTION_SCENARIO);
         case "cmd":
-            let room = config.cmds.find((t) => t.place == place + '_' + intent);
+            let room = config.cmds.find((t) => t.place == place, (t) => t.place == intent);
             console.log("getCommand function. action = " + action + " place = " + place + " intent = " + intent);
             if (room && room.cmd && room.cmd[action])
                 return Promise.resolve(room.cmd[action]);
             
-            return Promise.reject('désolé l\'emplacement ' + place + ' et l\'intention ' + intent +' ne prennent pas en charge l\'action ' + action);
+            return Promise.reject(resourceData(request).ERROR_ACTION_SCENARIO);
         case "interact":
-        case "variable":
     }
 }
 
@@ -130,7 +129,6 @@ function jeeQuery(type, id, value, json = true)
                 });
             }
         case "interact":
-        case "variable":
     }
 }
 
