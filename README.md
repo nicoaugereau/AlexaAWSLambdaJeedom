@@ -13,7 +13,7 @@ This skill is design for French and English languages. But it is possible to add
 -------------
 - Alexa developer account
 - AWS developer account
-- Freebox v7 (Delta and Devialet) or Alexa product (Echo, Dot)
+- Freebox v7 (Delta with Devialet) or Alexa product (Echo, Dot)
 - Raspberry and Jeedom installed with https
 
 
