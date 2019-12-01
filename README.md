@@ -21,6 +21,7 @@ This skill is design for French and English languages. But it is possible to add
 -------------
 - Open Alexa Developer Console and Create Skill
 - Copy the file 'interaction-model.json' in JSON editor
+- You can change add utterrances, actions in action slot or places in place slot
 - Save
 - Open AWS Developer console
 - Create an empty lambda function
@@ -47,6 +48,7 @@ Objects supported:
 - Curtains
 - Shutters
 
+**Usage**
 Invoke the skill:  
 Scenario example:
 - "Alexa ask Devialet to start scenario 4"
@@ -56,3 +58,17 @@ Command examples:
 - Or, tell "Alexa ask Devialet to turn on the light of the kitchen"
 - "Alexa ask Devialet to open the shutter of the kitchen"
 - "Alexa ask Devialet to put the kitchen shutter at 40 %"
+
+
+***Use for roller shutters***
+
+To control the shutters, 3 or 4 elements are important to give to Alexa: 
+- the request for a request (action) to Freebox Devialet
+- the action on the roller shutter (open / close)
+- the location of the roller shutter (in which room the shutter is located)
+- and if applicable, the percentage for positioning the roller shutter
+
+For example: 
+To open the shutters, ask Alexa "Alexa asks Devialet to open the shutters of the living room".
+To position the roller shutter at a certain percentage, Alexa must then be asked "Alexa asks Devialet to set the shutter at 20%".
+
