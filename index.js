@@ -10,6 +10,7 @@
 const config = require('./config');
 const request = require('./request');
 
+// language management
 let fr = {
     WELCOME: 'Bienvenue sur l\'assistant Freebox Devialet',
     WHAT_DO_YOU_WANT: 'Que vouliez-vous dire ?',
@@ -60,6 +61,12 @@ function resourceData(request) {
     return globalResourceData[locale];
 }
 
+/* 
+type (Jeedom API): scenario, cmd, interact, variable
+action: turn on, turn off...
+intent: light, door, window, curtain, shutter, wallplug, scenario, object
+place: id, room
+*/
 function getRequest(type, action, intent, place)
 {
     console.log("Getting Jeedom object information from Alexa JSON");
@@ -73,13 +80,15 @@ function getRequest(type, action, intent, place)
             
             return Promise.reject(resourceData(request).ERROR_ACTION_SCENARIO);
         case "cmd":
-            let room = config.cmds.find((t) => t.place == place, (t) => t.place == intent);
             console.log("getCommand function. action = " + action + " place = " + place + " intent = " + intent);
+            let room = config.cmds.find((t) => t.place == place, (t) => t.place == intent);
             if (room && room.cmd && room.cmd[action])
                 return Promise.resolve(room.cmd[action]);
             
             return Promise.reject(resourceData(request).ERROR_ACTION_SCENARIO);
-        case "interact":
+        case 'object':
+            console.log("Getting object informations");
+            let object = config.objects.find((t) => t.id == place);
     }
 }
 
@@ -128,7 +137,6 @@ function jeeQuery(type, id, value, json = true)
                     'id': id
                 });
             }
-        case "interact":
     }
 }
 
@@ -149,15 +157,16 @@ function createResponse(text, shouldEndSession = true) {
 	  return response;
 }
 
+// Alexa intents
 function handleRequest(intent) {
     
     console.log("Handle request");
-    
     let intentName = intent.name;
     let action = null;
     let place = null;
     let slider = null;
     let scenarioId = null;
+    let object = null;
     let reqType = null;
 
     switch (intentName) {
@@ -204,6 +213,7 @@ function handleRequest(intent) {
 				.then(() => createResponse( resourceData(request).MULTIPLE_RESPONSES[Math.floor(Math.random() * resourceData(request).MULTIPLE_RESPONSES.length)] ));
         break;
         case "wallplug":
+        case "objects":
             console.log("Getting intent name = " + intentName);
             reqType = 'cmd';
 
@@ -220,10 +230,10 @@ function handleRequest(intent) {
 			        console.log("Place value = " + place);
 		        }
 	        }
-	        
 	        catch (err) {
 		        return Promise.reject(resourceData(request).ERROR);
 	        }
+	        
 	        if (action == null) {
 		        return Promise.reject(resourceData(request).ERROR_ACTION);
 	        } else if (place == null) {
