@@ -9,54 +9,60 @@ module.exports = {
     },
     cmds: [
         {
-            description: '1 lumière du salon',
+            id: 1,
+            type: 'light',
+            description: 'lumière du salon',
             place: 'salon_light',
             intent: 'light',
             cmd: {
-                'allume': 86,
-                'éteins': 87,
-                'état': 85,
+                'allume': 10,
+                'éteins': 11,
+                'état': 12,
             }
         },
         {
+            id: 2,
+            type: 'window',
             description: 'fenêtres du salon',
             place: 'salon_window',
             intent: 'window',
             cmd: {
-                'ouvre': 86,
-                'ferme': 87,
-                'état': 85,
+                'ouvre': 20,
+                'ferme': 21,
+                'état': 22,
             }
         },
         {
+            id: 3,
+            type: 'wallplug',
             description: 'prises du salon',
             place: 'salon_wallPlug',
             intent: 'wallPlug',
             cmd: {
-                'allume': 86,
-                'éteins': 87,
-                'état': 85,
+                'allume': 30,
+                'éteins': 31,
+                'état': 32,
             }
         },
         {
+            id: 4,
+            type: 'shutter',
             description: 'Volet salon',
             place: 'salon_shutter',
             intent: 'shutter',
             cmd: {
-                'ouvre': 127,
-                'ferme': 126,
-                'état': 124,
-                'stoppe': 131,
-                'mets': 125,
+                'ouvre': 41,
+                'ferme': 42,
+                'état': 43,
+                'stoppe': 44,
+                'mets': 45,
             }
         }
     ],
     scenarios: [
         {
             id: 5,
-            name: '',
             type: '',
-            category: 'scenario',
             description: 'scenario mode nuit',
             intent: '',
             scenario: {
