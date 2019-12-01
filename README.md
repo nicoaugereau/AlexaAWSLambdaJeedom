@@ -49,6 +49,7 @@ Objects supported:
 - Shutters
 
 **Usage**
+-------------
 Invoke the skill:  
 Scenario example:
 - "Alexa ask Devialet to start scenario 4"
@@ -69,6 +70,16 @@ To control the shutters, 3 or 4 elements are important to give to Alexa:
 - and if applicable, the percentage for positioning the roller shutter
 
 For example: 
-To open the shutters, ask Alexa "Alexa asks Devialet to open the shutters of the living room".
-To position the roller shutter at a certain percentage, Alexa must then be asked "Alexa asks Devialet to set the shutter at 20%".
+- To open the shutters, ask Alexa "Alexa asks Devialet to open the shutters of the living room".
+- To position the roller shutter at a certain percentage, Alexa must then be asked "Alexa asks Devialet to set the shutter at 20%".
 
+
+***Use for lights***
+
+To control the lights, 3 elements are important to give to Alexa: 
+- the request for a request (action) to Freebox Devialet
+- the action on the light (on/off)
+- the location of the lamp
+
+For example: 
+"Alexa asks Devialet to turn on the light in the living room"
