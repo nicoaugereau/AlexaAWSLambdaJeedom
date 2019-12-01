@@ -1,7 +1,7 @@
 
 ![NodeJS version](https://img.shields.io/badge/node-v8.10-green.svg) 
 ![Version](https://img.shields.io/badge/version-v1.0-brightgreen)
-[comment]: # (![Dev status](https://img.shields.io/badge/status-development-orange.svg) )
+[//]: # ![Dev status](https://img.shields.io/badge/status-development-orange.svg)
 ![MIT Licence](https://img.shields.io/badge/license-MIT-green)
 
 # Alexa AWS Lambda assistant for Jeedom
