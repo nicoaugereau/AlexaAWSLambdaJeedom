@@ -64,22 +64,32 @@ Command examples:
 ***Use for roller shutters***
 
 To control the shutters, 3 or 4 elements are important to give to Alexa: 
-- the request for a request (action) to Freebox Devialet
+- the request to Freebox Devialet
 - the action on the roller shutter (open / close)
 - the location of the roller shutter (in which room the shutter is located)
 - and if applicable, the percentage for positioning the roller shutter
 
 For example: 
 - To open the shutters, ask Alexa "Alexa asks Devialet to open the shutters of the living room".
-- To position the roller shutter at a certain percentage, Alexa must then be asked "Alexa asks Devialet to set the shutter at 20%".
+- To position the roller shutter at a certain percentage, then ask "Alexa asks Devialet to set the shutter at 20%".
 
 
 ***Use for lights***
 
 To control the lights, 3 elements are important to give to Alexa: 
-- the request for a request (action) to Freebox Devialet
+- the request to Freebox Devialet
 - the action on the light (on/off)
 - the location of the lamp
 
 For example: 
 "Alexa asks Devialet to turn on the light in the living room"
+
+***Use for wallplugs***
+
+To control the wallplugs, 3 elements are important to give to Alexa: 
+- the request to Freebox Devialet
+- he action on the plug (on/off)
+- the location of the outlet
+
+For example: 
+"Alexa asks Devialet to turn on the taking of the living room"
