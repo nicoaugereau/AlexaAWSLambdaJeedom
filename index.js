@@ -15,7 +15,7 @@ let fr = {
     WELCOME: 'Bienvenue sur l\'assistant Freebox Devialet',
     WHAT_DO_YOU_WANT: 'Que vouliez-vous dire ?',
     UNHANDLED: 'Désolé cette skill n\'est pas prise en charge.',
-    HELP: 'Désolé je n\'ai pas pu répondre à votre demande. Vous pouvez me demander par exemple : Alexa demande à Devialet d\'allumer la lumière de la cuisine, ou ferme le volet du salon, ou encore baisse le volet à 20%.',
+    HELP: 'Désolé je n\'ai pas pu répondre à votre demande. Vous pouvez me demander par exemple : Alexa demande à Devialet d\'allumer la lumière de la cuisine, ou fermer le volet du salon, ou encore mettre le volet à 20%.',
     STOP: 'Au revoir. Merci pour avoir utilisé l\'assistant Freebox Devialet !',
     ERROR: 'Désolé il y a eu une erreur',
     ERROR_ACTION: 'Désolé je n\'ai pas compris l\'action',
