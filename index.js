@@ -81,11 +81,11 @@ function getRequest(type, action, intent, place)
             return Promise.reject(resourceData(request).ERROR_ACTION_SCENARIO);
         case "cmd":
             console.log("getCommand function. action = " + action + " place = " + place + " intent = " + intent);
-            let room = config.cmds.find((t) => t.place == place, (t) => t.place == intent);
+            let room = config.cmds.find((t) => t.place == place && t.intent == intent);
             if (room && room.cmd && room.cmd[action])
                 return Promise.resolve(room.cmd[action]);
             
-            return Promise.reject(resourceData(request).ERROR_ACTION_SCENARIO);
+            return Promise.reject(resourceData(request).HELP);
         case 'object':
             console.log("Getting object informations");
             let object = config.objects.find((t) => t.id == place);
