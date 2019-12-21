@@ -90,7 +90,7 @@ For example:
 
 To control the wallplugs, 3 elements are important to give to Alexa: 
 - the request to Freebox Devialet
-- he action on the plug (on/off)
+- the action on the plug (on/off)
 - the location of the outlet
 
 For example: 
