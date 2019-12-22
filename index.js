@@ -1,6 +1,6 @@
 /*
     Alexa Skill Interaction for Jeedom
-    Skill Version : 1.0
+    Skill Version : 1.1
     Author : Nicolas Augereau
     Licence : MIT
 */
@@ -77,18 +77,19 @@ function getRequest(type, action, intent, place)
             let scenarioId = config.scenarios.find((t) => t.id == place);
             if (scenarioId && scenarioId.scenario && scenarioId.scenario[action])
                 return Promise.resolve(scenarioId.scenario[action]);
-            
             return Promise.reject(resourceData(request).ERROR_ACTION_SCENARIO);
         case "cmd":
-            console.log("getCommand function. action = " + action + " place = " + place + " intent = " + intent);
+            console.log("getRequest cmd function. action = " + action + " place = " + place + " intent = " + intent);
             let room = config.cmds.find((t) => t.place == place && t.intent == intent);
             if (room && room.cmd && room.cmd[action])
                 return Promise.resolve(room.cmd[action]);
-            
             return Promise.reject(resourceData(request).HELP);
         case 'object':
-            console.log("Getting object informations");
-            let object = config.objects.find((t) => t.id == place);
+            console.log("getRequest object function. action = " + action + " intent = " + intent);
+            let object = config.objects.find((t) => t.place == place);
+            if (object && object.cmd && object.cmd[action])
+                return Promise.resolve(object.cmd[action]);
+            return Promise.reject(resourceData(request).HELP);
     }
 }
 
@@ -137,6 +138,18 @@ function jeeQuery(type, id, value, json = true)
                     'id': id
                 });
             }
+        case "object":
+            console.log("Getting object request. Id = " + id + " type = " + type);
+            return request({
+                host: config.jeedom.host,
+                port: config.jeedom.port,
+                path: config.jeedom.path,
+                json
+                }, {
+                    'apikey': config.jeedom.apikey,
+                    'type': 'cmd',
+                    'id': id,
+            });
     }
 }
 
@@ -166,7 +179,6 @@ function handleRequest(intent) {
     let place = null;
     let slider = null;
     let scenarioId = null;
-    let object = null;
     let reqType = null;
 
     switch (intentName) {
@@ -175,7 +187,7 @@ function handleRequest(intent) {
         case "window":
         case "curtain":
         case "shutter":
-	        console.log("Getting intent name = " + intentName);
+	        console.log("cmd intent is = " + intentName);
             reqType = 'cmd';
 
 	        try {
@@ -185,7 +197,7 @@ function handleRequest(intent) {
 
 		        if (actionValue.values) {
 			        action = actionValue.values[0].value.name;
-			        console.log("Action value =" + action);
+			        console.log("Action value = " + action);
 		        }
 		        if (placeValue.values) {
 			        place = placeValue.values[0].value.name;
@@ -208,13 +220,11 @@ function handleRequest(intent) {
             }
             
             return getRequest(reqType, action, intentName, place)
-                .then(console.log("Sending object command and request"))
+                .then(console.log("Sending cmd request"))
                 .then((c) => jeeQuery(reqType, c, slider, false))
 				.then(() => createResponse( resourceData(request).MULTIPLE_RESPONSES[Math.floor(Math.random() * resourceData(request).MULTIPLE_RESPONSES.length)] ));
-        break;
         case "wallplug":
-        case "objects":
-            console.log("Getting intent name = " + intentName);
+            console.log("intent is = " + intentName);
             reqType = 'cmd';
 
 	        try {
@@ -223,7 +233,7 @@ function handleRequest(intent) {
 
 		        if (actionValue.values) {
 			        action = actionValue.values[0].value.name;
-			        console.log("Action value =" + action);
+			        console.log("Action value = " + action);
 		        }
 		        if (placeValue.values) {
 			        place = placeValue.values[0].value.name;
@@ -241,12 +251,41 @@ function handleRequest(intent) {
             }
             
             return getRequest(reqType, action, intentName, place)
-                .then(console.log("Sending object command and request"))
+                .then(console.log("Sending wallplug request"))
                 .then((c) => jeeQuery(reqType, c, slider, false))
 				.then(() => createResponse( resourceData(request).MULTIPLE_RESPONSES[Math.floor(Math.random() * resourceData(request).MULTIPLE_RESPONSES.length)] ));
-        break;
+        case "objects":
+            console.log("intent is = " + intentName);
+            reqType = 'object';
+
+	        try {
+                let actionValue = intent.slots.OnOff.resolutions.resolutionsPerAuthority[0];
+                let placeValue = intent.slots.object.resolutions.resolutionsPerAuthority[0];
+		        if (actionValue.values) {
+			        action = actionValue.values[0].value.name;
+			        console.log("Action value = " + action);
+		        }
+		        if (placeValue.values) {
+			        place = placeValue.values[0].value.name;
+			        console.log("Place value = " + place);
+		        }
+	        }
+	        catch (err) {
+		        return Promise.reject(resourceData(request).ERROR);
+	        }
+	        
+	        if (action == null) {
+		        return Promise.reject(resourceData(request).ERROR_ACTION);
+	        } else if (place == null) {
+                return Promise.reject(resourceData(request).ERROR_PLACE);
+            }
+            
+            return getRequest(reqType, action, intentName, place)
+                .then(console.log("Sending object request"))
+                .then((c) => jeeQuery(reqType, c, slider, false))
+				.then(() => createResponse( resourceData(request).MULTIPLE_RESPONSES[Math.floor(Math.random() * resourceData(request).MULTIPLE_RESPONSES.length)] ));
         case "scenario":
-            console.log("Getting intent name = " + intentName);
+            console.log("scenario intent");
             reqType = 'scenario';
             
             try {
@@ -269,12 +308,10 @@ function handleRequest(intent) {
 		        return Promise.reject(resourceData(request).ERROR_ACTION_SCENARIO);
             }
             
-            
             return getRequest(reqType, action, intentName, scenarioId)
-                .then(console.log("Sending scenario command and request"))
+                .then(console.log("Sending scenario request"))
                 .then((c) => jeeQuery(reqType, scenarioId, c, false))
 				.then(() => createResponse( resourceData(request).MULTIPLE_RESPONSES[Math.floor(Math.random() * resourceData(request).MULTIPLE_RESPONSES.length)] ));
-        break;
         default:
             context.succeed(createResponse(resourceData(request).HELP));
     }
