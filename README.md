@@ -63,7 +63,7 @@ Command examples:
 - "Alexa ask Devialet to put the kitchen shutter at 40 %"
 
 
-***Use for roller shutters - curtains - windows ***
+***Use for roller shutters - curtains - windows***
 
 To control the shutters, 3 or 4 elements are important to give to Alexa: 
 - the request to Freebox Devialet
