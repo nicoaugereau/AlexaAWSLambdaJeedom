@@ -72,5 +72,16 @@ module.exports = {
                 'désactive': 'deactivate',
             }
         }
+    ],
+    objects:[
+        {
+            id:15,
+            type: 'object',
+            description: 'Recharger ma brosse à dents électrique',
+            place: 'brosse à dents',
+            cmd:{
+                'charge': 276,
+            }
+        }
     ]
 };
