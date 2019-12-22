@@ -1,5 +1,5 @@
 
-![Version](https://img.shields.io/badge/version-v1.0-brightgreen) ![MIT Licence](https://img.shields.io/badge/license-MIT-brightgreen)
+![Version](https://img.shields.io/badge/version-v1.1-brightgreen) ![MIT Licence](https://img.shields.io/badge/license-MIT-brightgreen)
 ![NodeJS version](https://img.shields.io/badge/node-v8.10-green.svg) 
 <!--
 ![Dev status](https://img.shields.io/badge/status-development-orange.svg)
@@ -63,7 +63,7 @@ Command examples:
 - "Alexa ask Devialet to put the kitchen shutter at 40 %"
 
 
-***Use for roller shutters***
+***Use for roller shutters - curtains - windows ***
 
 To control the shutters, 3 or 4 elements are important to give to Alexa: 
 - the request to Freebox Devialet
@@ -95,3 +95,14 @@ To control the wallplugs, 3 elements are important to give to Alexa:
 
 For example: 
 "Alexa asks Devialet to turn on the taking of the living room"
+
+***Use for objects***
+
+To control objects, 3 elements are important to give to Alexa: 
+- the request to Freebox Devialet
+- the action (charge, mow, clean, wash)
+- the object (toothbrush, lawn, house)
+
+For example: 
+"Alexa asks Devialet to mow the lawn"
+
