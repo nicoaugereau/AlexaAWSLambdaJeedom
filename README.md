@@ -71,7 +71,7 @@ To control the shutters, 3 or 4 elements are important to give to Alexa:
 - the location of the roller shutter (in which room the shutter is located)
 - and if applicable, the percentage for positioning the roller shutter
 
-For example: 
+Examples: 
 - To open the shutters, ask Alexa "Alexa asks Devialet to open the shutters of the living room".
 - To position the roller shutter at a certain percentage, then ask "Alexa asks Devialet to set the shutter at 20%".
 
@@ -83,8 +83,8 @@ To control the lights, 3 elements are important to give to Alexa:
 - the action on the light (on/off)
 - the location of the lamp
 
-For example: 
-"Alexa asks Devialet to turn on the light in the living room"
+Examples: 
+- "Alexa asks Devialet to turn on the light in the living room"
 
 ***Use for wallplugs***
 
@@ -93,8 +93,8 @@ To control the wallplugs, 3 elements are important to give to Alexa:
 - the action on the plug (on/off)
 - the location of the outlet
 
-For example: 
-"Alexa asks Devialet to turn on the taking of the living room"
+Examples: 
+- "Alexa asks Devialet to turn on the taking of the living room"
 
 ***Use for objects***
 
@@ -103,6 +103,7 @@ To control objects, 3 elements are important to give to Alexa:
 - the action (charge, mow, clean, wash)
 - the object (toothbrush, lawn, house)
 
-For example: 
-"Alexa asks Devialet to mow the lawn"
+Examples: 
+- "Alexa asks Devialet to mow the lawn"
+- "Alexa asks Devialet to charge my toothbrush"
 
