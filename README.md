@@ -25,7 +25,7 @@ This skill is design for French and English languages. But it is possible to add
 -------------
 - Open Alexa Developer Console and Create Skill
 - Copy the file 'interaction-model.json' in JSON editor
-- You can change add utterrances, actions in action slot or places in place slot
+- You can change or add utterrances, actions in action slot or places in place slot
 - Save
 - Open AWS Developer console
 - Create an empty lambda function
