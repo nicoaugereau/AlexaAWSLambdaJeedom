@@ -504,6 +504,17 @@
                     "name": "object",
                     "values": [
                         {
+                            "name": {
+                                "value": "tondeuse à barbe"
+                            }
+                        },
+                        {
+                            "id": "razor",
+                            "name": {
+                                "value": "rasoir"
+                            }
+                        },
+                        {
                             "id": "coffee",
                             "name": {
                                 "value": "café"
