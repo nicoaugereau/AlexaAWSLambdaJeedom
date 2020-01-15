@@ -81,6 +81,7 @@ module.exports = {
             place: 'brosse à dents',
             cmd:{
                 'charge': 276,
+                'stoppe': 277,
             }
         }
     ]
