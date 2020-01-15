@@ -104,7 +104,7 @@ To control the wallplugs, 3 elements are important to give to Alexa:
 - the location of the outlet
 
 Examples: 
-- "Alexa ask Devialet to turn on the taking of the living room"
+- "Alexa ask Devialet to turn on the wall plug of the living room"
 
 ***Use for objects***
 
