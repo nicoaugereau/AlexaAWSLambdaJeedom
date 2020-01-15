@@ -130,6 +130,9 @@
                         }
                     ],
                     "samples": [
+                        "change la maison en mode {mode}",
+                        "bascule la maison en mode {mode}",
+                        "programme la maison en mode {mode}",
                         "passe la maison en mode {mode}",
                         "mets la maison en mode {mode}"
                     ]
@@ -185,12 +188,75 @@
                         "{OnOff} les volets de l' {room}",
                         "{OnOff} les volets de la {room}"
                     ]
+                },
+                {
+                    "name": "objects",
+                    "slots": [
+                        {
+                            "name": "OnOff",
+                            "type": "action"
+                        },
+                        {
+                            "name": "object",
+                            "type": "object"
+                        },
+                        {
+                            "name": "user",
+                            "type": "AMAZON.FirstName"
+                        }
+                    ],
+                    "samples": [
+                        "{OnOff} la {object} de {user}",
+                        "{OnOff} le {object} de {user}",
+                        "{OnOff} ma {object}",
+                        "{OnOff} mon {object}",
+                        "{OnOff} la {object}",
+                        "{OnOff} le {object}"
+                    ]
                 }
             ],
             "types": [
                 {
                     "name": "action",
                     "values": [
+                        {
+                            "id": "mow",
+                            "name": {
+                                "value": "tond",
+                                "synonyms": [
+                                    "tondre"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "do",
+                            "name": {
+                                "value": "fait",
+                                "synonyms": [
+                                    "faire"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "recharge",
+                            "name": {
+                                "value": "charge",
+                                "synonyms": [
+                                    "recharge",
+                                    "recharger",
+                                    "charger"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "status",
+                            "name": {
+                                "value": "statut",
+                                "synonyms": [
+                                    "état"
+                                ]
+                            }
+                        },
                         {
                             "id": "put",
                             "name": {
@@ -289,6 +355,26 @@
                 {
                     "name": "place",
                     "values": [
+                        {
+                            "name": {
+                                "value": "chambre d'amis"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "chambre parentale"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "chambre 2"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "chambre 1"
+                            }
+                        },
                         {
                             "name": {
                                 "value": "salle à manger"
@@ -410,6 +496,70 @@
                         {
                             "name": {
                                 "value": "jour"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "object",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "tondeuse à barbe"
+                            }
+                        },
+                        {
+                            "id": "razor",
+                            "name": {
+                                "value": "rasoir"
+                            }
+                        },
+                        {
+                            "id": "coffee",
+                            "name": {
+                                "value": "café"
+                            }
+                        },
+                        {
+                            "id": "computer",
+                            "name": {
+                                "value": "ordinateur"
+                            }
+                        },
+                        {
+                            "id": "tablet",
+                            "name": {
+                                "value": "tablette"
+                            }
+                        },
+                        {
+                            "id": "phone",
+                            "name": {
+                                "value": "téléphone"
+                            }
+                        },
+                        {
+                            "id": "toothbrush",
+                            "name": {
+                                "value": "brosse à dents"
+                            }
+                        },
+                        {
+                            "id": "hairclipper",
+                            "name": {
+                                "value": "tondeuse à cheveux"
+                            }
+                        },
+                        {
+                            "id": "lawnmower",
+                            "name": {
+                                "value": "tondeuse"
+                            }
+                        },
+                        {
+                            "id": "coffeemachine",
+                            "name": {
+                                "value": "cafetière"
                             }
                         }
                     ]

@@ -1,6 +1,6 @@
 
-![Version](https://img.shields.io/badge/version-v1.0-brightgreen) ![MIT Licence](https://img.shields.io/badge/license-MIT-brightgreen)
-![NodeJS version](https://img.shields.io/badge/node-v8.10-green.svg) 
+![Version](https://img.shields.io/badge/Version-v1.1-brightgreen) ![MIT Licence](https://img.shields.io/badge/License-MIT-brightgreen)
+![NodeJS version](https://img.shields.io/badge/NodeJS-v8.10-green.svg) 
 <!--
 ![Dev status](https://img.shields.io/badge/status-development-orange.svg)
 -->
@@ -25,7 +25,7 @@ This skill is design for French and English languages. But it is possible to add
 -------------
 - Open Alexa Developer Console and Create Skill
 - Copy the file 'interaction-model.json' in JSON editor
-- You can change add utterrances, actions in action slot or places in place slot
+- You can change or add utterrances, actions in action slot or places in place slot
 - Save
 - Open AWS Developer console
 - Create an empty lambda function
@@ -63,7 +63,7 @@ Command examples:
 - "Alexa ask Devialet to put the kitchen shutter at 40 %"
 
 
-***Use for roller shutters***
+***Use for roller shutters - curtains - windows***
 
 To control the shutters, 3 or 4 elements are important to give to Alexa: 
 - the request to Freebox Devialet
@@ -71,7 +71,7 @@ To control the shutters, 3 or 4 elements are important to give to Alexa:
 - the location of the roller shutter (in which room the shutter is located)
 - and if applicable, the percentage for positioning the roller shutter
 
-For example: 
+Examples: 
 - To open the shutters, ask Alexa "Alexa asks Devialet to open the shutters of the living room".
 - To position the roller shutter at a certain percentage, then ask "Alexa asks Devialet to set the shutter at 20%".
 
@@ -83,8 +83,8 @@ To control the lights, 3 elements are important to give to Alexa:
 - the action on the light (on/off)
 - the location of the lamp
 
-For example: 
-"Alexa asks Devialet to turn on the light in the living room"
+Examples: 
+- "Alexa asks Devialet to turn on the light in the living room"
 
 ***Use for wallplugs***
 
@@ -93,5 +93,18 @@ To control the wallplugs, 3 elements are important to give to Alexa:
 - the action on the plug (on/off)
 - the location of the outlet
 
-For example: 
-"Alexa asks Devialet to turn on the taking of the living room"
+Examples: 
+- "Alexa asks Devialet to turn on the taking of the living room"
+
+***Use for objects***
+
+To control objects, 3 elements are important to give to Alexa: 
+- the request to Freebox Devialet
+- the action (charge, mow, clean, wash)
+- the object (toothbrush, lawn, house)
+
+Examples: 
+- "Alexa asks Devialet to mow the lawn"
+- "Alexa asks Devialet to charge my toothbrush"
+- "Alexa asks Devialet to stop charging my toothbrush"
+
