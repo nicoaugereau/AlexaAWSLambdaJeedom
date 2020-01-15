@@ -106,4 +106,5 @@ To control objects, 3 elements are important to give to Alexa:
 Examples: 
 - "Alexa asks Devialet to mow the lawn"
 - "Alexa asks Devialet to charge my toothbrush"
+- "Alexa asks Devialet to stop charging my toothbrush"
 
