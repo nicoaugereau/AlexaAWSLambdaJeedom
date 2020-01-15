@@ -39,7 +39,7 @@ This skill is design for French and English languages. But it is possible to add
 **Capabilities**
 -------------
 You can ask Alexa to invoke Jeedom API methods:
-- Scenario: start, stop, activate, deactive
+- Scenario: start, stop, active, deactive
 - Command: turn on, turn off, open, close, slider (%), status
 
 Objects supported:
@@ -52,9 +52,9 @@ Objects supported:
 
 **Usage**
 -------------
-Invoke the skill:  
-Scenario example:
-- "Alexa ask Devialet to start scenario 4"
+Invoke the skill (skill name : Devialet):
+- "Alexa open Devialet"
+- or "Alexa ask devialet to turn on the lights"
 
 Command examples:
 - Tell Alexa "Alexa open Devialet" (Devialet is the skill invocation name) and tell "turn on the light of the kitchen"
@@ -62,6 +62,17 @@ Command examples:
 - "Alexa ask Devialet to open the shutter of the kitchen"
 - "Alexa ask Devialet to put the kitchen shutter at 40 %"
 
+
+***Use for scenario***
+
+To execute scenario, 2 elements are important to give to Alexa:
+- the request to Freebox Devialet
+- the action (start, stop, activate, deactive)
+- number of the scenario
+
+Example:
+- "Alexa ask Devialet to start scenario 4"
+- "Alexa ask Devialet to active scenario 2"
 
 ***Use for roller shutters - curtains - windows***
 
@@ -72,9 +83,8 @@ To control the shutters, 3 or 4 elements are important to give to Alexa:
 - and if applicable, the percentage for positioning the roller shutter
 
 Examples: 
-- To open the shutters, ask Alexa "Alexa asks Devialet to open the shutters of the living room".
-- To position the roller shutter at a certain percentage, then ask "Alexa asks Devialet to set the shutter at 20%".
-
+- To open the shutters, ask Alexa "Alexa ask Devialet to open the shutters of the living room".
+- To position the roller shutter at a certain percentage, then ask "Alexa ask Devialet to set the shutter at 20%".
 
 ***Use for lights***
 
@@ -84,7 +94,7 @@ To control the lights, 3 elements are important to give to Alexa:
 - the location of the lamp
 
 Examples: 
-- "Alexa asks Devialet to turn on the light in the living room"
+- "Alexa ask Devialet to turn on the light in the living room"
 
 ***Use for wallplugs***
 
@@ -94,7 +104,7 @@ To control the wallplugs, 3 elements are important to give to Alexa:
 - the location of the outlet
 
 Examples: 
-- "Alexa asks Devialet to turn on the taking of the living room"
+- "Alexa ask Devialet to turn on the taking of the living room"
 
 ***Use for objects***
 
@@ -104,7 +114,7 @@ To control objects, 3 elements are important to give to Alexa:
 - the object (toothbrush, lawn, house)
 
 Examples: 
-- "Alexa asks Devialet to mow the lawn"
-- "Alexa asks Devialet to charge my toothbrush"
-- "Alexa asks Devialet to stop charging my toothbrush"
+- "Alexa ask Devialet to mow the lawn"
+- "Alexa ask Devialet to charge my toothbrush"
+- "Alexa ask Devialet to stop charging my toothbrush"
 
