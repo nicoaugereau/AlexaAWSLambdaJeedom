@@ -53,8 +53,8 @@ Objects supported:
 **Usage**
 -------------
 Invoke the skill (skill name : Devialet):
-- "Alexa open Devialet"
-- or "Alexa ask devialet to turn on the lights"
+- "Alexa open Devialet" and "turn on the lights of the living room"
+- or "Alexa ask devialet to turn on the lights of the living room"
 
 Command examples:
 - Tell Alexa "Alexa open Devialet" (Devialet is the skill invocation name) and tell "turn on the light of the kitchen"
