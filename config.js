@@ -63,7 +63,7 @@ module.exports = {
         {
             id: 5,
             type: '',
-            description: 'Scenario',
+            description: 'scenario',
             intent: '',
             scenario: {
                 'exécute': 'start',
@@ -102,4 +102,5 @@ module.exports = {
                 'désactive': 'deactivate',
             }
         }
+    ]
 };

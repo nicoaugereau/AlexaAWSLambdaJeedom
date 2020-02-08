@@ -1,6 +1,6 @@
 
-![Version](https://img.shields.io/badge/Version-v1.1-brightgreen) ![MIT Licence](https://img.shields.io/badge/License-MIT-brightgreen)
-![NodeJS version](https://img.shields.io/badge/NodeJS-v8.10-green.svg) 
+![Version](https://img.shields.io/badge/Version-v1.2-brightgreen) ![MIT Licence](https://img.shields.io/badge/License-MIT-brightgreen)
+![NodeJS version](https://img.shields.io/badge/NodeJS-v10.x-green.svg) 
 <!--
 ![Dev status](https://img.shields.io/badge/status-development-orange.svg)
 -->
@@ -74,6 +74,8 @@ Example:
 - "Alexa ask Devialet to start scenario 4"
 - "Alexa ask Devialet to active scenario 2"
 
+In the config.js you need to associate the id to the Jeedom scenario id.
+
 ***Use for roller shutters - curtains - windows***
 
 To control the shutters, 3 or 4 elements are important to give to Alexa: 
@@ -86,6 +88,8 @@ Examples:
 - To open the shutters, ask Alexa "Alexa ask Devialet to open the shutters of the living room".
 - To position the roller shutter at a certain percentage, then ask "Alexa ask Devialet to set the shutter at 20%".
 
+In the config.js you need to associate the object commands ids, and if you want for information the id to the Jeedom object Node ID.
+
 ***Use for lights***
 
 To control the lights, 3 elements are important to give to Alexa: 
@@ -96,6 +100,8 @@ To control the lights, 3 elements are important to give to Alexa:
 Examples: 
 - "Alexa ask Devialet to turn on the light in the living room"
 
+In the config.js you need to associate the object commands ids.
+
 ***Use for wallplugs***
 
 To control the wallplugs, 3 elements are important to give to Alexa: 
@@ -105,6 +111,8 @@ To control the wallplugs, 3 elements are important to give to Alexa:
 
 Examples: 
 - "Alexa ask Devialet to turn on the wall plug of the living room"
+
+In the config.js you need to associate the object commands ids.
 
 ***Use for objects***
 
@@ -118,3 +126,4 @@ Examples:
 - "Alexa ask Devialet to charge my toothbrush"
 - "Alexa ask Devialet to stop charging my toothbrush"
 
+In the config.js you need to associate the object commands ids.
