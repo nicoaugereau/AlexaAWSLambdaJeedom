@@ -34,28 +34,28 @@ module.exports = {
         },
         {
             id: 3,
-            type: 'wallplug',
-            description: 'prises du salon',
-            place: 'salon_wallPlug',
-            intent: 'wallPlug',
-            cmd: {
-                'allume': 30,
-                'éteins': 31,
-                'état': 32,
-            }
-        },
-        {
-            id: 4,
             type: 'shutter',
             description: 'Volet salon',
             place: 'salon_shutter',
             intent: 'shutter',
             cmd: {
-                'ouvre': 41,
-                'ferme': 42,
-                'état': 43,
-                'stoppe': 44,
-                'mets': 45,
+                'ouvre': 31,
+                'ferme': 32,
+                'état': 33,
+                'stoppe': 34,
+                'mets': 35,
+            }
+        }
+    ],
+    wallplug:[
+        {
+            id:4,
+            type: 'walplug',
+            description: 'Lampe',
+            place: 'bureau',
+            cmd:{
+                'allume': 41,
+                'éteins': 42,
             }
         }
     ],
@@ -63,7 +63,7 @@ module.exports = {
         {
             id: 5,
             type: '',
-            description: 'scenario mode nuit',
+            description: 'Scenario',
             intent: '',
             scenario: {
                 'exécute': 'start',
@@ -75,14 +75,31 @@ module.exports = {
     ],
     objects:[
         {
-            id:15,
+            id:6,
             type: 'object',
             description: 'Recharger ma brosse à dents électrique',
             place: 'brosse à dents',
             cmd:{
-                'charge': 276,
-                'stoppe': 277,
+                'charge': 51,
+                'stoppe': 52,
             }
         }
-    ]
+    ],
+    housemode:[
+        {
+            id:7,
+            name: 'jour',
+            cmd:{
+                'active': 'activate',
+                'désactive': 'deactivate',
+            }
+        },
+        {
+            id:8,
+            name: 'nuit',
+            cmd:{
+                'active': 'activate',
+                'désactive': 'deactivate',
+            }
+        }
 };

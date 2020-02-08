@@ -15,7 +15,7 @@ let fr = {
     WELCOME: 'Bienvenue sur l\'assistant Freebox Devialet',
     WHAT_DO_YOU_WANT: 'Que vouliez-vous dire ?',
     UNHANDLED: 'Désolé cette skill n\'est pas prise en charge.',
-    HELP: 'Désolé je n\'ai pas pu répondre à votre demande. Vous pouvez me demander par exemple : Alexa demande à Devialet d\'allumer la lumière de la cuisine, ou fermer le volet du salon, ou encore mettre le volet à 20%.',
+    HELP: 'Désolé je n\'ai pas pu répondre à votre demande. Vous pouvez me demander par exemple : Alexa demande à Devialet d\'allumer la lumière de la cuisine, ou fermer le volet du salon, ou encore mettre le volet de la chambre à 20%.',
     STOP: 'Au revoir. Merci pour avoir utilisé l\'assistant Freebox Devialet !',
     ERROR: 'Désolé il y a eu une erreur',
     ERROR_ACTION: 'Désolé je n\'ai pas compris l\'action',
@@ -28,7 +28,7 @@ let en = {
     WELCOME: 'Welcome to Freebox Devialet Assistant',
     WHAT_DO_YOU_WANT: 'What did you want to say?',
     UNHANDLED: 'Sorry this skill is not supported.',
-    HELP: 'Sorry I couldn\'t answer your request. You can ask me for example: Alexa asks Devialet to turn on the kitchen light, or closes the living room shutter, or lowers the shutter to 20%.',
+    HELP: 'Sorry I couldn\'t answer your request. You can ask me for example: Alexa asks Devialet to turn on the kitchen light, or closes the living room shutter, or lowers the bedroomm shutter to 20%.',
     STOP: 'Bye! Thanks for using the Freebox Devialet Assistant!',
     ERROR: 'Sorry there was something wrong',
     ERROR_ACTION: 'Sorry i did not understand the action',
@@ -90,6 +90,12 @@ function getRequest(type, action, intent, place)
             if (object && object.cmd && object.cmd[action])
                 return Promise.resolve(object.cmd[action]);
             return Promise.reject(resourceData(request).HELP);
+        case "housemode":
+            console.log("getRequest cmd function for housemode. mode = " + place  + " action = " + action);
+            let mode = config.housemode.find((t) => t.name == place);
+            if (mode && mode.cmd && mode.cmd[action])
+                return Promise.resolve(mode.cmd[action]);
+            return Promise.reject(resourceData(request).HELP);
     }
 }
 
@@ -112,7 +118,6 @@ function jeeQuery(type, id, value, json = true)
                     'action': value
             });
         case "cmd":
-        case "housemode":
             if (value) {
                 console.log("Getting command request with slider value. Id = " + id + " type =  " + type + " slider = " + value);
                 return request({
@@ -140,6 +145,7 @@ function jeeQuery(type, id, value, json = true)
                 });
             }
         case "object":
+        case "housemode":
             console.log("Getting object request. Id = " + id + " type = " + type);
             return request({
                 host: config.jeedom.host,
@@ -180,11 +186,8 @@ function handleRequest(intent) {
     let place = null;
     let slider = null;
     let scenarioId = null;
+    let mode = null;
     let reqType = null;
-
-    let actionValue = intent.slots.OnOff.resolutions.resolutionsPerAuthority[0];
-    let placeValue = intent.slots.room.resolutions.resolutionsPerAuthority[0];
-    let sliderValue = intent.slots.slider.value;
 
     switch (intentName) {
         case "light":
@@ -196,6 +199,10 @@ function handleRequest(intent) {
             reqType = 'cmd';
 
 	        try {
+                let actionValue = intent.slots.OnOff.resolutions.resolutionsPerAuthority[0];
+                let placeValue = intent.slots.room.resolutions.resolutionsPerAuthority[0];
+                let sliderValue = intent.slots.slider.value;
+
 		        if (actionValue.values) {
 			        action = actionValue.values[0].value.name;
 			        console.log("Action value = " + action);
@@ -229,6 +236,9 @@ function handleRequest(intent) {
             reqType = 'cmd';
 
 	        try {
+                let actionValue = intent.slots.OnOff.resolutions.resolutionsPerAuthority[0];
+                let placeValue = intent.slots.room.resolutions.resolutionsPerAuthority[0];
+
 		        if (actionValue.values) {
 			        action = actionValue.values[0].value.name;
 			        console.log("Action value = " + action);
@@ -257,6 +267,8 @@ function handleRequest(intent) {
             reqType = 'object';
 
 	        try {
+                let actionValue = intent.slots.OnOff.resolutions.resolutionsPerAuthority[0];
+                let placeValue = intent.slots.object.resolutions.resolutionsPerAuthority[0];
 		        if (actionValue.values) {
 			        action = actionValue.values[0].value.name;
 			        console.log("Action value = " + action);
@@ -281,8 +293,7 @@ function handleRequest(intent) {
                 .then((c) => jeeQuery(reqType, c, slider, false))
 				.then(() => createResponse( resourceData(request).MULTIPLE_RESPONSES[Math.floor(Math.random() * resourceData(request).MULTIPLE_RESPONSES.length)] ));
         case "scenario":
-        case "housemode":
-            console.log("scenario/housemode intent");
+            console.log("scenario intent");
             reqType = 'scenario';
             
             try {
@@ -295,6 +306,7 @@ function handleRequest(intent) {
     		}
 
             try {
+                let actionValue = intent.slots.OnOff.resolutions.resolutionsPerAuthority[0];
 		        if (actionValue.values) {
 			        action = actionValue.values[0].value.name;
 		        }
@@ -304,8 +316,32 @@ function handleRequest(intent) {
             }
             
             return getRequest(reqType, action, intentName, scenarioId)
-                .then(console.log("Sending scenario/housemode request"))
+                .then(console.log("Sending scenario request"))
                 .then((c) => jeeQuery(reqType, scenarioId, c, false))
+				.then(() => createResponse( resourceData(request).MULTIPLE_RESPONSES[Math.floor(Math.random() * resourceData(request).MULTIPLE_RESPONSES.length)] ));
+        case "housemode":
+            console.log("housemode intent");
+            reqType = 'housemode';
+            
+            try {
+                let actionValue = intent.slots.action.resolutions.resolutionsPerAuthority[0];
+                let modeValue = intent.slots.mode.resolutions.resolutionsPerAuthority[0];
+		        if (actionValue.values) {
+			        action = actionValue.values[0].value.name;
+			        console.log("Action value = " + action);
+		        }
+		        if (modeValue.values) {
+			        mode = modeValue.values[0].value.name;
+			        console.log("Mode value = " + mode);
+		        }
+	        }
+	        catch (err) {
+		        return Promise.reject(resourceData(request).ERROR_ACTION_SCENARIO);
+            }
+            
+            return getRequest(reqType, action, intentName, mode)
+                .then(console.log("Sending housemode request"))
+                .then((c) => jeeQuery(reqType, c, slider, false))
 				.then(() => createResponse( resourceData(request).MULTIPLE_RESPONSES[Math.floor(Math.random() * resourceData(request).MULTIPLE_RESPONSES.length)] ));
         default:
             context.succeed(createResponse(resourceData(request).HELP));
