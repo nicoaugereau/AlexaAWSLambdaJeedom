@@ -1,6 +1,6 @@
 /*
     Alexa Skill Interaction for Jeedom
-    Skill Version : 1.1
+    Skill Version : 1.2
     Author : Nicolas Augereau
     Licence : MIT
 */
@@ -112,6 +112,7 @@ function jeeQuery(type, id, value, json = true)
                     'action': value
             });
         case "cmd":
+        case "housemode":
             if (value) {
                 console.log("Getting command request with slider value. Id = " + id + " type =  " + type + " slider = " + value);
                 return request({
@@ -181,6 +182,10 @@ function handleRequest(intent) {
     let scenarioId = null;
     let reqType = null;
 
+    let actionValue = intent.slots.OnOff.resolutions.resolutionsPerAuthority[0];
+    let placeValue = intent.slots.room.resolutions.resolutionsPerAuthority[0];
+    let sliderValue = intent.slots.slider.value;
+
     switch (intentName) {
         case "light":
         case "door":
@@ -191,10 +196,6 @@ function handleRequest(intent) {
             reqType = 'cmd';
 
 	        try {
-                let actionValue = intent.slots.OnOff.resolutions.resolutionsPerAuthority[0];
-                let placeValue = intent.slots.room.resolutions.resolutionsPerAuthority[0];
-                let sliderValue = intent.slots.slider.value;
-
 		        if (actionValue.values) {
 			        action = actionValue.values[0].value.name;
 			        console.log("Action value = " + action);
@@ -228,9 +229,6 @@ function handleRequest(intent) {
             reqType = 'cmd';
 
 	        try {
-                let actionValue = intent.slots.OnOff.resolutions.resolutionsPerAuthority[0];
-                let placeValue = intent.slots.room.resolutions.resolutionsPerAuthority[0];
-
 		        if (actionValue.values) {
 			        action = actionValue.values[0].value.name;
 			        console.log("Action value = " + action);
@@ -259,8 +257,6 @@ function handleRequest(intent) {
             reqType = 'object';
 
 	        try {
-                let actionValue = intent.slots.OnOff.resolutions.resolutionsPerAuthority[0];
-                let placeValue = intent.slots.object.resolutions.resolutionsPerAuthority[0];
 		        if (actionValue.values) {
 			        action = actionValue.values[0].value.name;
 			        console.log("Action value = " + action);
@@ -285,7 +281,8 @@ function handleRequest(intent) {
                 .then((c) => jeeQuery(reqType, c, slider, false))
 				.then(() => createResponse( resourceData(request).MULTIPLE_RESPONSES[Math.floor(Math.random() * resourceData(request).MULTIPLE_RESPONSES.length)] ));
         case "scenario":
-            console.log("scenario intent");
+        case "housemode":
+            console.log("scenario/housemode intent");
             reqType = 'scenario';
             
             try {
@@ -298,8 +295,6 @@ function handleRequest(intent) {
     		}
 
             try {
-                let actionValue = intent.slots.action.resolutions.resolutionsPerAuthority[0];
-
 		        if (actionValue.values) {
 			        action = actionValue.values[0].value.name;
 		        }
@@ -309,7 +304,7 @@ function handleRequest(intent) {
             }
             
             return getRequest(reqType, action, intentName, scenarioId)
-                .then(console.log("Sending scenario request"))
+                .then(console.log("Sending scenario/housemode request"))
                 .then((c) => jeeQuery(reqType, scenarioId, c, false))
 				.then(() => createResponse( resourceData(request).MULTIPLE_RESPONSES[Math.floor(Math.random() * resourceData(request).MULTIPLE_RESPONSES.length)] ));
         default:
