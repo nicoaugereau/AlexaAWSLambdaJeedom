@@ -109,16 +109,16 @@
                     "name": "scenario",
                     "slots": [
                         {
-                            "name": "action",
-                            "type": "action"
-                        },
-                        {
                             "name": "scenarioId",
                             "type": "AMAZON.NUMBER"
+                        },
+                        {
+                            "name": "OnOff",
+                            "type": "action"
                         }
                     ],
                     "samples": [
-                        "{action} le scenario {scenarioId}"
+                        "{OnOff} le scenario {scenarioId}"
                     ]
                 },
                 {
@@ -127,14 +127,20 @@
                         {
                             "name": "mode",
                             "type": "mode"
+                        },
+                        {
+                            "name": "action",
+                            "type": "action"
+                        },
+                        {
+                            "name": "housing",
+                            "type": "housing"
                         }
                     ],
                     "samples": [
-                        "change la maison en mode {mode}",
-                        "bascule la maison en mode {mode}",
-                        "programme la maison en mode {mode}",
-                        "passe la maison en mode {mode}",
-                        "mets la maison en mode {mode}"
+                        "{action} l' {housing} en mode {mode}",
+                        "{action} la {housing} en mode {mode}",
+                        "{action} le mode {mode}"
                     ]
                 },
                 {
@@ -203,9 +209,17 @@
                         {
                             "name": "user",
                             "type": "AMAZON.FirstName"
+                        },
+                        {
+                            "name": "action",
+                            "type": "action"
                         }
                     ],
                     "samples": [
+                        "{OnOff} de {action} de {object}",
+                        "{OnOff} la {action} de {object}",
+                        "{OnOff} l' {action} de {object}",
+                        "{OnOff} le {action} de {object}",
                         "{OnOff} la {object} de {user}",
                         "{OnOff} le {object} de {user}",
                         "{OnOff} ma {object}",
@@ -224,6 +238,7 @@
                             "name": {
                                 "value": "tond",
                                 "synonyms": [
+                                    "tonte",
                                     "tondre"
                                 ]
                             }
@@ -242,6 +257,7 @@
                             "name": {
                                 "value": "charge",
                                 "synonyms": [
+                                    "chargement",
                                     "recharge",
                                     "recharger",
                                     "charger"
@@ -474,26 +490,79 @@
                     "name": "mode",
                     "values": [
                         {
+                            "id": "manual",
+                            "name": {
+                                "value": "manuel"
+                            }
+                        },
+                        {
+                            "id": "guest",
+                            "name": {
+                                "value": "invité"
+                            }
+                        },
+                        {
+                            "id": "monitoring",
+                            "name": {
+                                "value": "surveillance"
+                            }
+                        },
+                        {
+                            "id": "watch",
+                            "name": {
+                                "value": "veille"
+                            }
+                        },
+                        {
+                            "id": "autumn",
+                            "name": {
+                                "value": "automne"
+                            }
+                        },
+                        {
+                            "id": "spring",
+                            "name": {
+                                "value": "printemps"
+                            }
+                        },
+                        {
+                            "id": "winter",
+                            "name": {
+                                "value": "hiver"
+                            }
+                        },
+                        {
+                            "id": "summer",
+                            "name": {
+                                "value": "été"
+                            }
+                        },
+                        {
+                            "id": "here",
                             "name": {
                                 "value": "présent"
                             }
                         },
                         {
+                            "id": "away",
                             "name": {
                                 "value": "absent"
                             }
                         },
                         {
+                            "id": "hollidays",
                             "name": {
                                 "value": "vacances"
                             }
                         },
                         {
+                            "id": "night",
                             "name": {
                                 "value": "nuit"
                             }
                         },
                         {
+                            "id": "day",
                             "name": {
                                 "value": "jour"
                             }
@@ -560,6 +629,23 @@
                             "id": "coffeemachine",
                             "name": {
                                 "value": "cafetière"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "housing",
+                    "values": [
+                        {
+                            "id": "apartment",
+                            "name": {
+                                "value": "appartement"
+                            }
+                        },
+                        {
+                            "id": "house",
+                            "name": {
+                                "value": "maison"
                             }
                         }
                     ]
