@@ -88,18 +88,41 @@ module.exports = {
     housemode:[
         {
             id:7,
-            name: 'jour',
+            name: 'manuel',
             cmd:{
-                'active': 'activate',
-                'désactive': 'deactivate',
+                'active': 344,
             }
         },
         {
             id:8,
+            name: 'jour',
+            cmd:{
+                'active': 346,
+                'désactive': 344,
+            }
+        },
+        {
+            id:9,
             name: 'nuit',
             cmd:{
-                'active': 'activate',
-                'désactive': 'deactivate',
+                'active': 345,
+                'désactive': 344,
+            }
+        },
+        {
+            id:10,
+            name: 'invité',
+            cmd:{
+                'active': 347,
+                'désactive': 344,
+            }
+        },
+        {
+            id:11,
+            name: 'veille',
+            cmd:{
+                'active': 348,
+                'désactive': 344,
             }
         }
     ]
