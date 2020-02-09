@@ -94,7 +94,7 @@ function getRequest(type, action, intent, place)
             console.log("getRequest cmd function for housemode. mode = " + place  + " action = " + action);
             let mode = config.housemode.find((t) => t.name == place);
             if (mode && mode.cmd && mode.cmd[action])
-                return Promise.resolve(mode.cmd[action]);
+                return Promise.resolve(mode.id);
             return Promise.reject(resourceData(request).HELP);
     }
 }
@@ -105,7 +105,8 @@ function jeeQuery(type, id, value, json = true)
     // Jeedom Query
     switch (type) {
         case "scenario":
-            console.log("Getting scenario request. Id = " + id + " action " + value + " type = " + type);
+        case "housemode":
+            console.log("Getting scenario request. Id = " + id + " action = " + value + " type = " + type);
             return request({
                 host: config.jeedom.host,
                 port: config.jeedom.port,
@@ -145,7 +146,6 @@ function jeeQuery(type, id, value, json = true)
                 });
             }
         case "object":
-        case "housemode":
             console.log("Getting object request. Id = " + id + " type = " + type);
             return request({
                 host: config.jeedom.host,
@@ -341,7 +341,7 @@ function handleRequest(intent) {
             
             return getRequest(reqType, action, intentName, mode)
                 .then(console.log("Sending housemode request"))
-                .then((c) => jeeQuery(reqType, c, slider, false))
+                .then((c) => jeeQuery(reqType, c, action, false))
 				.then(() => createResponse( resourceData(request).MULTIPLE_RESPONSES[Math.floor(Math.random() * resourceData(request).MULTIPLE_RESPONSES.length)] ));
         default:
             context.succeed(createResponse(resourceData(request).HELP));
