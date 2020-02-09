@@ -94,7 +94,7 @@ function getRequest(type, action, intent, place)
             console.log("getRequest cmd function for housemode. mode = " + place  + " action = " + action);
             let mode = config.housemode.find((t) => t.name == place);
             if (mode && mode.cmd && mode.cmd[action])
-                return Promise.resolve(mode.id);
+                return Promise.resolve(mode.cmd[action]);
             return Promise.reject(resourceData(request).HELP);
     }
 }
@@ -105,7 +105,6 @@ function jeeQuery(type, id, value, json = true)
     // Jeedom Query
     switch (type) {
         case "scenario":
-        case "housemode":
             console.log("Getting scenario request. Id = " + id + " action = " + value + " type = " + type);
             return request({
                 host: config.jeedom.host,
@@ -120,7 +119,7 @@ function jeeQuery(type, id, value, json = true)
             });
         case "cmd":
             if (value) {
-                console.log("Getting command request with slider value. Id = " + id + " type =  " + type + " slider = " + value);
+                console.log("Getting command request with slider value. Id = " + id + " type = " + type + " slider = " + value);
                 return request({
                     host: config.jeedom.host,
                     port: config.jeedom.port,
@@ -156,6 +155,18 @@ function jeeQuery(type, id, value, json = true)
                     'apikey': config.jeedom.apikey,
                     'type': 'cmd',
                     'id': id,
+            });
+        case "housemode":
+            console.log("Getting command request for housemode. Id = " + id);
+            return request({
+                host: config.jeedom.host,
+                port: config.jeedom.port,
+                path: config.jeedom.path,
+                json
+            }, {
+                'apikey': config.jeedom.apikey,
+                'type': 'cmd',
+                'id': id
             });
     }
 }
@@ -299,6 +310,7 @@ function handleRequest(intent) {
             try {
             	if (intent.slots.scenarioId.value) {
             		scenarioId = intent.slots.scenarioId.value;
+            		console.log("Scenario id = " + scenarioId);
             	}
             }
             catch (err) {
@@ -309,6 +321,7 @@ function handleRequest(intent) {
                 let actionValue = intent.slots.OnOff.resolutions.resolutionsPerAuthority[0];
 		        if (actionValue.values) {
 			        action = actionValue.values[0].value.name;
+			        console.log("Action value = " + action);
 		        }
 	        }
 	        catch (err) {
