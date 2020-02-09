@@ -41,6 +41,9 @@ This skill is design for French and English languages. But it is possible to add
 You can ask Alexa to invoke Jeedom API methods:
 - Scenario: start, stop, active, deactive
 - Command: turn on, turn off, open, close, slider (%), status
+- Objects : you can ask for objects actions (charging toothbrush, mow the lawn...)
+- House mode : you can ask for your house mode (manual, day, night, guest, alarm...)
+
 
 Objects supported:
 - Lights
@@ -49,6 +52,7 @@ Objects supported:
 - Windows
 - Curtains
 - Shutters
+
 
 **Usage**
 -------------
@@ -126,4 +130,19 @@ Examples:
 - "Alexa ask Devialet to charge my toothbrush"
 - "Alexa ask Devialet to stop charging my toothbrush"
 
-In the config.js you need to associate the object commands ids.
+In the config.js you need to associate the object commands ids, and associate Jeedom object to a room and wallplug.
+
+***Use for housemode***
+
+You need to install Virtual plugin.
+Create a virtual equipment with what you want (manual, day, night, alarm, guest...) and create 1 or more scenario for all modes.
+
+3 elements are important to give to Alexa: 
+- the request to Freebox Devialet
+- the action (activate, deactive (then return to manual mode))
+- the name of the mode (manual, day, night, alarm, hollidays...)
+
+Examples: 
+- "Alexa ask Devialet to activate the night mode"
+
+In the config.js you need to associate the Virtual commands ids.
