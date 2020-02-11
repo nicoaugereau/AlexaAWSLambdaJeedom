@@ -27,94 +27,129 @@
                             "type": "place"
                         },
                         {
-                            "name": "OnOff",
+                            "name": "action",
                             "type": "action"
+                        },
+                        {
+                            "name": "user",
+                            "type": "AMAZON.FirstName"
                         }
                     ],
                     "samples": [
-                        "{OnOff} la lumière de l' {room}",
-                        "{OnOff} les lumières de la {room}",
-                        "{OnOff} la lumière de la {room}",
-                        "{OnOff} les lumières du {room}",
-                        "{OnOff} la lumière du {room}"
+                        "{action} les lumières de la {room} d' {user}",
+                        "{action} les lumières de la {room} de {user}",
+                        "{action} la lumière de la {room} d' {user}",
+                        "{action} la lumière de la {room} de {user}",
+                        "{action} les lumières de l' {room}",
+                        "{action} la lumière de l' {room}",
+                        "{action} les lumières de la {room}",
+                        "{action} la lumière de la {room}",
+                        "{action} les lumières du {room}",
+                        "{action} la lumière du {room}"
                     ]
                 },
                 {
                     "name": "door",
                     "slots": [
                         {
-                            "name": "OnOff",
+                            "name": "action",
                             "type": "action"
                         },
                         {
                             "name": "room",
                             "type": "place"
+                        },
+                        {
+                            "name": "user",
+                            "type": "AMAZON.FirstName"
                         }
                     ],
                     "samples": [
-                        "{OnOff} la porte de l' {room}",
-                        "{OnOff} les portes de la {room}",
-                        "{OnOff} la porte de la {room}",
-                        "{OnOff} les portes du {room}",
-                        "{OnOff} la porte du {room}"
+                        "{action} la porte de la {room} d' {user}",
+                        "{action} la porte de la {room} de {user}",
+                        "{action} la porte de l' {room}",
+                        "{action} les portes de la {room}",
+                        "{action} la porte de la {room}",
+                        "{action} les portes du {room}",
+                        "{action} la porte du {room}"
                     ]
                 },
                 {
                     "name": "wallplug",
                     "slots": [
                         {
-                            "name": "OnOff",
+                            "name": "action",
                             "type": "action"
                         },
                         {
                             "name": "room",
                             "type": "place"
+                        },
+                        {
+                            "name": "user",
+                            "type": "AMAZON.FirstName"
                         }
                     ],
                     "samples": [
-                        "{OnOff} la prise de l' {room}",
-                        "{OnOff} les prises de la {room}",
-                        "{OnOff} la prise de la {room}",
-                        "{OnOff} les prises du {room}",
-                        "{OnOff} la prise du {room}",
-                        "{OnOff} l'interrupteur de l' {room}",
-                        "{OnOff} les interrupteurs de la {room}",
-                        "{OnOff} l'interrupteur de la {room}",
-                        "{OnOff} les interrupteurs du {room}",
-                        "{OnOff} l'interrupteur du {room}"
+                        "{action} les prises de la {room} d' {user}",
+                        "{action} les prises de la {room} de {user}",
+                        "{action} la prise de la {room} d' {user}",
+                        "{action} la prise de la {room} de {user}",
+                        "{action} les prises de l' {room}",
+                        "{action} les prises de la {room}",
+                        "{action} les prises du {room}",
+                        "{action} la prise de l' {room}",
+                        "{action} la prise de la {room} ",
+                        "{action} la prise du {room}"
                     ]
                 },
                 {
                     "name": "window",
                     "slots": [
                         {
-                            "name": "OnOff",
+                            "name": "action",
                             "type": "action"
                         },
                         {
                             "name": "room",
                             "type": "place"
+                        },
+                        {
+                            "name": "user",
+                            "type": "AMAZON.FirstName"
+                        },
+                        {
+                            "name": "percent",
+                            "type": "AMAZON.NUMBER"
                         }
                     ],
                     "samples": [
-                        "{OnOff} les fenêtres de l' {room}",
-                        "{OnOff} la fenêtre de l' {room}",
-                        "{OnOff} les fenêtres de la {room}",
-                        "{OnOff} la fenêtre de la {room}",
-                        "{OnOff} les fenêtres du {room}",
-                        "{OnOff} la fenêtre du {room}"
+                        "{action} les fenêtres de la {room} d' {user} à {percent} pourcent",
+                        "{action} les fenêtres de la {room} de {user} à {percent} pourcent",
+                        "{action} la fenêtre de la {room} d' {user} à {percent} pourcent",
+                        "{action} la fenêtre de la {room} de {user} à {percent} pourcent",
+                        "{action} les fenêtres de la {room} d' {user}",
+                        "{action} les fenêtres de la {room} de {user}",
+                        "{action} la fenêtre de la {room} d' {user}",
+                        "{action} la fenêtre de la {room} de {user}",
+                        "{action} les fenêtres de l' {room}",
+                        "{action} la fenêtre de l' {room}",
+                        "{action} les fenêtres de la {room}",
+                        "{action} la fenêtre de la {room}",
+                        "{action} les fenêtres du {room}",
+                        "{action} la fenêtre du {room}"
                     ]
                 },
                 {
                     "name": "scenario",
                     "slots": [
                         {
-                            "name": "action",
-                            "type": "action"
-                        },
-                        {
                             "name": "scenarioId",
                             "type": "AMAZON.NUMBER"
+                        },
+                        {
+                            "name": "action",
+                            "type": "action"
                         }
                     ],
                     "samples": [
@@ -127,42 +162,70 @@
                         {
                             "name": "mode",
                             "type": "mode"
+                        },
+                        {
+                            "name": "action",
+                            "type": "action"
+                        },
+                        {
+                            "name": "housing",
+                            "type": "housing"
                         }
                     ],
                     "samples": [
-                        "change la maison en mode {mode}",
-                        "bascule la maison en mode {mode}",
-                        "programme la maison en mode {mode}",
-                        "passe la maison en mode {mode}",
-                        "mets la maison en mode {mode}"
+                        "{action} l' {housing} en mode {mode}",
+                        "{action} la {housing} en mode {mode}",
+                        "{action} le mode {mode}"
                     ]
                 },
                 {
                     "name": "curtain",
                     "slots": [
                         {
-                            "name": "OnOff",
+                            "name": "action",
                             "type": "action"
                         },
                         {
                             "name": "room",
                             "type": "place"
+                        },
+                        {
+                            "name": "user",
+                            "type": "AMAZON.FirstName"
+                        },
+                        {
+                            "name": "percent",
+                            "type": "AMAZON.NUMBER"
                         }
                     ],
                     "samples": [
-                        "{OnOff} les rideaux du {room}",
-                        "{OnOff} les rideaux de l' {room}",
-                        "{OnOff} les rideaux de la {room}",
-                        "{OnOff} le rideau de la {room}",
-                        "{OnOff} le rideau du {room}",
-                        "{OnOff} le rideau de l' {room}"
+                        "{action} le rideau de la {room} d' {user} à {percent} pourcent",
+                        "{action} le rideau de la {room} de {user} à {percent} pourcent",
+                        "{action} les rideaux de la {room} d' {user} à {percent} pourcent",
+                        "{action} les rideaux de la {room} de {user} à {percent} pourcent",
+                        "{action} le rideau de la {room} d' {user}",
+                        "{action} le rideau de la {room} de {user}",
+                        "{action} les rideaux de la {room} d' {user}",
+                        "{action} les rideaux de la {room} de {user}",
+                        "{action} les rideaux du {room} à {percent} pourcent",
+                        "{action} les rideaux de l' {room} à {percent} pourcent",
+                        "{action} les rideaux de la {room} à {percent} pourcent",
+                        "{action} le rideau du {room} à {percent} pourcent",
+                        "{action} le rideau de l' {room} à {percent} pourcent",
+                        "{action} le rideau de la {room} à {percent} pourcent",
+                        "{action} les rideaux du {room}",
+                        "{action} les rideaux de l' {room}",
+                        "{action} les rideaux de la {room}",
+                        "{action} le rideau de la {room}",
+                        "{action} le rideau du {room}",
+                        "{action} le rideau de l' {room}"
                     ]
                 },
                 {
                     "name": "shutter",
                     "slots": [
                         {
-                            "name": "OnOff",
+                            "name": "action",
                             "type": "action"
                         },
                         {
@@ -172,33 +235,6 @@
                         {
                             "name": "slider",
                             "type": "AMAZON.NUMBER"
-                        }
-                    ],
-                    "samples": [
-                        "{OnOff} les volets de l' {room} à {slider} pourcent",
-                        "{OnOff} les volets de la {room} à {slider} pourcent",
-                        "{OnOff} les volets du {room} à {slider} pourcent",
-                        "{OnOff} le volet de la {room} à {slider} pourcent",
-                        "{OnOff} le volet de l' {room} à {slider} pourcent",
-                        "{OnOff} le volet du {room} à {slider} pourcent",
-                        "{OnOff} le volet du {room}",
-                        "{OnOff} le volet de l' {room}",
-                        "{OnOff} le volet de la {room}",
-                        "{OnOff} les volets du {room}",
-                        "{OnOff} les volets de l' {room}",
-                        "{OnOff} les volets de la {room}"
-                    ]
-                },
-                {
-                    "name": "objects",
-                    "slots": [
-                        {
-                            "name": "OnOff",
-                            "type": "action"
-                        },
-                        {
-                            "name": "object",
-                            "type": "object"
                         },
                         {
                             "name": "user",
@@ -206,12 +242,60 @@
                         }
                     ],
                     "samples": [
-                        "{OnOff} la {object} de {user}",
-                        "{OnOff} le {object} de {user}",
-                        "{OnOff} ma {object}",
-                        "{OnOff} mon {object}",
-                        "{OnOff} la {object}",
-                        "{OnOff} le {object}"
+                        "{action} les volets de la {room} de {user} à {slider} pourcent",
+                        "{action} les volets de la {room} d' {user} à {slider} pourcent",
+                        "{action} les volets de la {room} de {user}",
+                        "{action} les volets de la {room} d' {user}",
+                        "{action} le volet de la {room} d' {user} à {slider} pourcent",
+                        "{action} le volet de la {room} de {user} à {slider} pourcent",
+                        "{action} le volet de la {room} d' {user}",
+                        "{action} le volet de la {room} de {user}",
+                        "{action} les volets de l' {room} à {slider} pourcent",
+                        "{action} les volets de la {room} à {slider} pourcent",
+                        "{action} les volets du {room} à {slider} pourcent",
+                        "{action} le volet de la {room} à {slider} pourcent",
+                        "{action} le volet de l' {room} à {slider} pourcent",
+                        "{action} le volet du {room} à {slider} pourcent",
+                        "{action} le volet du {room}",
+                        "{action} le volet de l' {room}",
+                        "{action} le volet de la {room}",
+                        "{action} les volets du {room}",
+                        "{action} les volets de l' {room}",
+                        "{action} les volets de la {room}"
+                    ]
+                },
+                {
+                    "name": "objects",
+                    "slots": [
+                        {
+                            "name": "object",
+                            "type": "object"
+                        },
+                        {
+                            "name": "user",
+                            "type": "AMAZON.FirstName"
+                        },
+                        {
+                            "name": "action",
+                            "type": "action"
+                        },
+                        {
+                            "name": "addition",
+                            "type": "action"
+                        }
+                    ],
+                    "samples": [
+                        "{action} la {object} d' {user}",
+                        "{action} de {addition} de {object}",
+                        "{action} la {addition} de {object}",
+                        "{action} l' {addition} de {object}",
+                        "{action} le {addition} de {object}",
+                        "{action} la {object} de {user}",
+                        "{action} le {object} de {user}",
+                        "{action} ma {object}",
+                        "{action} mon {object}",
+                        "{action} la {object}",
+                        "{action} le {object}"
                     ]
                 }
             ],
@@ -224,6 +308,7 @@
                             "name": {
                                 "value": "tond",
                                 "synonyms": [
+                                    "tonte",
                                     "tondre"
                                 ]
                             }
@@ -242,6 +327,7 @@
                             "name": {
                                 "value": "charge",
                                 "synonyms": [
+                                    "chargement",
                                     "recharge",
                                     "recharger",
                                     "charger"
@@ -258,7 +344,7 @@
                             }
                         },
                         {
-                            "id": "put",
+                            "id": "set",
                             "name": {
                                 "value": "mets",
                                 "synonyms": [
@@ -285,7 +371,7 @@
                             }
                         },
                         {
-                            "id": "play",
+                            "id": "start",
                             "name": {
                                 "value": "exécute",
                                 "synonyms": [
@@ -333,7 +419,7 @@
                             }
                         },
                         {
-                            "id": "turnOff",
+                            "id": "turnoff",
                             "name": {
                                 "value": "éteins",
                                 "synonyms": [
@@ -342,7 +428,7 @@
                             }
                         },
                         {
-                            "id": "turnOn",
+                            "id": "turnon",
                             "name": {
                                 "value": "allume",
                                 "synonyms": [
@@ -474,26 +560,85 @@
                     "name": "mode",
                     "values": [
                         {
+                            "id": "standard",
+                            "name": {
+                                "value": "standard"
+                            }
+                        },
+                        {
+                            "id": "security",
+                            "name": {
+                                "value": "sécurité"
+                            }
+                        },
+                        {
+                            "id": "manual",
+                            "name": {
+                                "value": "manuel"
+                            }
+                        },
+                        {
+                            "id": "guest",
+                            "name": {
+                                "value": "invité"
+                            }
+                        },
+                        {
+                            "id": "watch",
+                            "name": {
+                                "value": "veille"
+                            }
+                        },
+                        {
+                            "id": "autumn",
+                            "name": {
+                                "value": "automne"
+                            }
+                        },
+                        {
+                            "id": "spring",
+                            "name": {
+                                "value": "printemps"
+                            }
+                        },
+                        {
+                            "id": "winter",
+                            "name": {
+                                "value": "hiver"
+                            }
+                        },
+                        {
+                            "id": "summer",
+                            "name": {
+                                "value": "été"
+                            }
+                        },
+                        {
+                            "id": "here",
                             "name": {
                                 "value": "présent"
                             }
                         },
                         {
+                            "id": "away",
                             "name": {
                                 "value": "absent"
                             }
                         },
                         {
+                            "id": "hollidays",
                             "name": {
                                 "value": "vacances"
                             }
                         },
                         {
+                            "id": "night",
                             "name": {
                                 "value": "nuit"
                             }
                         },
                         {
+                            "id": "day",
                             "name": {
                                 "value": "jour"
                             }
@@ -560,6 +705,23 @@
                             "id": "coffeemachine",
                             "name": {
                                 "value": "cafetière"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "housing",
+                    "values": [
+                        {
+                            "id": "apartment",
+                            "name": {
+                                "value": "appartement"
+                            }
+                        },
+                        {
+                            "id": "house",
+                            "name": {
+                                "value": "maison"
                             }
                         }
                     ]
