@@ -148,16 +148,12 @@
                             "type": "AMAZON.NUMBER"
                         },
                         {
-<<<<<<< HEAD
                             "name": "action",
-=======
-                            "name": "OnOff",
->>>>>>> d941cfb718853e723cce2f8b602a67524bf7b88b
                             "type": "action"
                         }
                     ],
                     "samples": [
-                        "{OnOff} le scenario {scenarioId}"
+                        "{action} le scenario {scenarioId}"
                     ]
                 },
                 {
@@ -282,7 +278,6 @@
                         {
                             "name": "action",
                             "type": "action"
-<<<<<<< HEAD
                         },
                         {
                             "name": "addition",
@@ -301,21 +296,6 @@
                         "{action} mon {object}",
                         "{action} la {object}",
                         "{action} le {object}"
-=======
-                        }
-                    ],
-                    "samples": [
-                        "{OnOff} de {action} de {object}",
-                        "{OnOff} la {action} de {object}",
-                        "{OnOff} l' {action} de {object}",
-                        "{OnOff} le {action} de {object}",
-                        "{OnOff} la {object} de {user}",
-                        "{OnOff} le {object} de {user}",
-                        "{OnOff} ma {object}",
-                        "{OnOff} mon {object}",
-                        "{OnOff} la {object}",
-                        "{OnOff} le {object}"
->>>>>>> d941cfb718853e723cce2f8b602a67524bf7b88b
                     ]
                 }
             ],
@@ -580,7 +560,6 @@
                     "name": "mode",
                     "values": [
                         {
-<<<<<<< HEAD
                             "id": "standard",
                             "name": {
                                 "value": "standard"
@@ -593,8 +572,6 @@
                             }
                         },
                         {
-=======
->>>>>>> d941cfb718853e723cce2f8b602a67524bf7b88b
                             "id": "manual",
                             "name": {
                                 "value": "manuel"
@@ -607,15 +584,6 @@
                             }
                         },
                         {
-<<<<<<< HEAD
-=======
-                            "id": "monitoring",
-                            "name": {
-                                "value": "surveillance"
-                            }
-                        },
-                        {
->>>>>>> d941cfb718853e723cce2f8b602a67524bf7b88b
                             "id": "watch",
                             "name": {
                                 "value": "veille"
