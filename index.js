@@ -67,7 +67,7 @@ action: turn on, turn off...
 intent: light, door, window, curtain, shutter, wallplug, scenario, object
 place: id, room
 */
-function getRequest(type, action, intent, place, user = false)
+function getConfig(type, action, intent, place, user = false)
 {
     console.log("Getting Jeedom object information from Alexa JSON");
     // get informations from config.js
@@ -231,7 +231,7 @@ function handleRequest(intent) {
                 return Promise.reject(resourceData(request).ERROR_PLACE);
             }
             
-            return getRequest(reqType, action, intentName, place, user)
+            return getConfig(reqType, action, intentName, place, user)
                 .then(console.log("Sending cmd request"))
                 .then((c) => jeeQuery(reqType, c, slider, false))
 				.then(() => createResponse( resourceData(request).MULTIPLE_RESPONSES[Math.floor(Math.random() * resourceData(request).MULTIPLE_RESPONSES.length)] ));
@@ -266,7 +266,7 @@ function handleRequest(intent) {
                 return Promise.reject(resourceData(request).ERROR_PLACE);
             }
             
-            return getRequest(reqType, action, intentName, place, user)
+            return getConfig(reqType, action, intentName, place, user)
                 .then(console.log("Sending wallplug request"))
                 .then((c) => jeeQuery(reqType, c, slider, false))
 				.then(() => createResponse( resourceData(request).MULTIPLE_RESPONSES[Math.floor(Math.random() * resourceData(request).MULTIPLE_RESPONSES.length)] ));
@@ -301,7 +301,7 @@ function handleRequest(intent) {
                 return Promise.reject(resourceData(request).ERROR_PLACE);
             }
             
-            return getRequest(reqType, action, intentName, place, user)
+            return getConfig(reqType, action, intentName, place, user)
                 .then(console.log("Sending object request"))
                 .then((c) => jeeQuery(reqType, c, slider, false))
 				.then(() => createResponse( resourceData(request).MULTIPLE_RESPONSES[Math.floor(Math.random() * resourceData(request).MULTIPLE_RESPONSES.length)] ));
@@ -329,7 +329,7 @@ function handleRequest(intent) {
 		        return Promise.reject(resourceData(request).ERROR_ACTION_SCENARIO);
             }
             
-            return getRequest(reqType, action, intentName, scenarioId)
+            return getConfig(reqType, action, intentName, scenarioId)
                 .then(console.log("Sending scenario request"))
                 .then((c) => jeeQuery(reqType, scenarioId, c, false))
 				.then(() => createResponse( resourceData(request).MULTIPLE_RESPONSES[Math.floor(Math.random() * resourceData(request).MULTIPLE_RESPONSES.length)] ));
@@ -353,7 +353,7 @@ function handleRequest(intent) {
 		        return Promise.reject(resourceData(request).ERROR_ACTION_SCENARIO);
             }
             
-            return getRequest(reqType, action, intentName, mode)
+            return getConfig(reqType, action, intentName, mode)
                 .then(console.log("Sending housemode request"))
                 .then((c) => jeeQuery(reqType, c, action, false))
 				.then(() => createResponse( resourceData(request).MULTIPLE_RESPONSES[Math.floor(Math.random() * resourceData(request).MULTIPLE_RESPONSES.length)] ));
