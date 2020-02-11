@@ -12,38 +12,68 @@ module.exports = {
             id: 1,
             type: 'light',
             description: 'lumière du salon',
-            place: 'salon_light',
+            place: 'salon',
             intent: 'light',
             cmd: {
-                'allume': 10,
-                'éteins': 11,
-                'état': 12,
+                'turnon': 10,
+                'turnoff': 11,
+                'status': 12,
             }
         },
         {
             id: 2,
             type: 'window',
             description: 'fenêtres du salon',
-            place: 'salon_window',
+            place: 'salon',
             intent: 'window',
             cmd: {
-                'ouvre': 20,
-                'ferme': 21,
-                'état': 22,
+                'open': 20,
+                'close': 21,
+                'status': 22,
             }
         },
         {
             id: 3,
             type: 'shutter',
             description: 'Volet salon',
-            place: 'salon_shutter',
+            place: 'salon',
             intent: 'shutter',
             cmd: {
-                'ouvre': 31,
-                'ferme': 32,
-                'état': 33,
-                'stoppe': 34,
-                'mets': 35,
+                'open': 31,
+                'close': 32,
+                'status': 33,
+                'stop': 34,
+                'set': 35,
+            }
+        },
+        {
+            id: 4,
+            type: 'shutter',
+            description: 'Volet salon',
+            place: 'chambre 1',
+            intent: 'shutter',
+            user: null,
+            cmd: {
+                'open': 31,
+                'close': 32,
+                'status': 33,
+                'stop': 34,
+                'set': 35,
+            }
+        },
+        {
+            id: 4,
+            type: 'shutter',
+            description: 'Volet salon',
+            place: 'chambre',
+            intent: 'shutter',
+            user: 'erik',
+            cmd: {
+                'open': 31,
+                'close': 32,
+                'status': 33,
+                'stop': 34,
+                'set': 35,
             }
         }
     ],
@@ -54,8 +84,19 @@ module.exports = {
             description: 'Lampe',
             place: 'bureau',
             cmd:{
-                'allume': 41,
-                'éteins': 42,
+                'turnon': 41,
+                'turnoff': 42,
+            }
+        },
+        {
+            id:4,
+            type: 'walplug',
+            description: 'Lampe',
+            place: 'chambre',
+            user: 'erik',
+            cmd:{
+                'turnon': 41,
+                'turnoff': 42,
             }
         }
     ],
@@ -64,12 +105,11 @@ module.exports = {
             id: 5,
             type: '',
             description: 'scenario',
-            intent: '',
             scenario: {
-                'exécute': 'start',
-                'stoppe': 'stop',
+                'start': 'start',
+                'stop': 'stop',
                 'active': 'activate',
-                'désactive': 'deactivate',
+                'deactive': 'deactivate',
             }
         }
     ],
@@ -79,50 +119,46 @@ module.exports = {
             type: 'object',
             description: 'Recharger ma brosse à dents électrique',
             place: 'brosse à dents',
+            user: 'charlotte',
             cmd:{
-                'charge': 51,
-                'stoppe': 52,
+                'recharge': 51,
+                'stop': 52,
+            }
+        },
+        {
+            id:7,
+            type: 'object',
+            description: 'Recharger ma brosse à dents électrique',
+            place: 'brosse à dents',
+            user: 'erik',
+            cmd:{
+                'recharge': 51,
+                'stop': 52,
             }
         }
     ],
     housemode:[
         {
-            id:7,
+            id:8,
             name: 'manuel',
             cmd:{
                 'active': 344,
             }
         },
         {
-            id:8,
+            id:9,
             name: 'jour',
             cmd:{
                 'active': 346,
-                'désactive': 344,
-            }
-        },
-        {
-            id:9,
-            name: 'nuit',
-            cmd:{
-                'active': 345,
-                'désactive': 344,
+                'deactive': 344,
             }
         },
         {
             id:10,
-            name: 'invité',
+            name: 'nuit',
             cmd:{
-                'active': 347,
-                'désactive': 344,
-            }
-        },
-        {
-            id:11,
-            name: 'veille',
-            cmd:{
-                'active': 348,
-                'désactive': 344,
+                'active': 345,
+                'deactive': 344,
             }
         }
     ]
