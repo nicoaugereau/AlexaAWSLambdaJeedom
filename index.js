@@ -67,31 +67,31 @@ action: turn on, turn off...
 intent: light, door, window, curtain, shutter, wallplug, scenario, object
 place: id, room
 */
-function getRequest(type, action, intent, place)
+function getRequest(type, action, intent, place, user = false)
 {
     console.log("Getting Jeedom object information from Alexa JSON");
     // get informations from config.js
     switch (type) {
         case "scenario":
-            console.log("Getting Jeedom scenario informations");
+            console.log("Config information for " + type + ". id: " + place);
             let scenarioId = config.scenarios.find((t) => t.id == place);
             if (scenarioId && scenarioId.scenario && scenarioId.scenario[action])
                 return Promise.resolve(scenarioId.scenario[action]);
             return Promise.reject(resourceData(request).ERROR_ACTION_SCENARIO);
         case "cmd":
-            console.log("getRequest cmd function. action = " + action + " place = " + place + " intent = " + intent);
-            let room = config.cmds.find((t) => t.place == place && t.intent == intent);
+            console.log("Config information for " + type + ". action: " + action + " intent: " + intent + " place: " + place + " user:" + user);
+            let room = config.cmds.find((t) => t.intent == intent && t.place == place && t.user == user);
             if (room && room.cmd && room.cmd[action])
                 return Promise.resolve(room.cmd[action]);
             return Promise.reject(resourceData(request).HELP);
         case 'object':
-            console.log("getRequest object function. action = " + action + " intent = " + intent);
-            let object = config.objects.find((t) => t.place == place);
+            console.log("Config information for " + type + ". action: " + action + " intent: " + intent + " user:" + user);
+            let object = config.objects.find((t) => t.place == place && t.user == user);
             if (object && object.cmd && object.cmd[action])
                 return Promise.resolve(object.cmd[action]);
             return Promise.reject(resourceData(request).HELP);
         case "housemode":
-            console.log("getRequest cmd function for housemode. mode = " + place  + " action = " + action);
+            console.log("Config information for " + type + ". action: " + action + " mode: " + place);
             let mode = config.housemode.find((t) => t.name == place);
             if (mode && mode.cmd && mode.cmd[action])
                 return Promise.resolve(mode.cmd[action]);
@@ -101,17 +101,18 @@ function getRequest(type, action, intent, place)
 
 function jeeQuery(type, id, value, json = true)
 {
-    console.log("Getting command request for Jeedom");
-    // Jeedom Query
-    switch (type) {
-        case "scenario":
-            console.log("Getting scenario request. Id = " + id + " action = " + value + " type = " + type);
-            return request({
+    console.log("Sending request for Jeedom");
+    var options = {
                 host: config.jeedom.host,
                 port: config.jeedom.port,
                 path: config.jeedom.path,
                 json
-                }, {
+                };
+    // Jeedom Query
+    switch (type) {
+        case "scenario":
+            console.log(type + ". Id: " + id + " action: " + value + " type: " + type);
+            return request(options, {
                     'apikey': config.jeedom.apikey,
                     'type': type,
                     'id': id,
@@ -119,51 +120,31 @@ function jeeQuery(type, id, value, json = true)
             });
         case "cmd":
             if (value) {
-                console.log("Getting command request with slider value. Id = " + id + " type = " + type + " slider = " + value);
-                return request({
-                    host: config.jeedom.host,
-                    port: config.jeedom.port,
-                    path: config.jeedom.path,
-                    json
-                }, {
+                console.log(type + " with slider value. Id: " + id + " type: " + type + " slider: " + value);
+                return request(options, {
                     'apikey': config.jeedom.apikey,
                     'type': type,
                     'id': id,
                     'slider': value
                 });
             }else{
-                console.log("Getting command request without slider value. Id = " + id + " type =  " + type);
-                return request({
-                    host: config.jeedom.host,
-                    port: config.jeedom.port,
-                    path: config.jeedom.path,
-                    json
-                }, {
+                console.log(type + " without slider value. Id: " + id + " type: " + type);
+                return request(options, {
                     'apikey': config.jeedom.apikey,
                     'type': type,
                     'id': id
                 });
             }
         case "object":
-            console.log("Getting object request. Id = " + id + " type = " + type);
-            return request({
-                host: config.jeedom.host,
-                port: config.jeedom.port,
-                path: config.jeedom.path,
-                json
-                }, {
+            console.log(type + ". Id: " + id + " type: " + type);
+            return request(options, {
                     'apikey': config.jeedom.apikey,
                     'type': 'cmd',
                     'id': id,
             });
         case "housemode":
-            console.log("Getting command request for housemode. Id = " + id);
-            return request({
-                host: config.jeedom.host,
-                port: config.jeedom.port,
-                path: config.jeedom.path,
-                json
-            }, {
+            console.log(type + ". Id: " + id );
+            return request(options, {
                 'apikey': config.jeedom.apikey,
                 'type': 'cmd',
                 'id': id
@@ -196,36 +177,48 @@ function handleRequest(intent) {
     let action = null;
     let place = null;
     let slider = null;
+    let user = null;
     let scenarioId = null;
     let mode = null;
     let reqType = null;
-
+    
+    console.log("Intent is " + intentName);
     switch (intentName) {
         case "light":
         case "door":
         case "window":
         case "curtain":
         case "shutter":
-	        console.log("cmd intent is = " + intentName);
             reqType = 'cmd';
 
 	        try {
-                let actionValue = intent.slots.OnOff.resolutions.resolutionsPerAuthority[0];
+                let actionValue = intent.slots.action.resolutions.resolutionsPerAuthority[0];
                 let placeValue = intent.slots.room.resolutions.resolutionsPerAuthority[0];
                 let sliderValue = intent.slots.slider.value;
-
+                let userValue = intent.slots.user.value;
+    
 		        if (actionValue.values) {
-			        action = actionValue.values[0].value.name;
-			        console.log("Action value = " + action);
+			        action = actionValue.values[0].value.id;
+			        console.log("Action value: " + action);
 		        }
 		        if (placeValue.values) {
 			        place = placeValue.values[0].value.name;
-			        console.log("Place value = " + place);
+			        console.log("Place value: " + place);
 		        }
 		        if (sliderValue) {
-                    console.log("Slider value = " + sliderValue);
-                    slider = 100-sliderValue;
-                    console.log("slider = " + slider);
+                    if (action !== "set") {
+                        if (action == "close") {
+                            slider = 100-sliderValue;
+                        } else {
+                            slider = sliderValue;
+                        }
+                        action = "set";
+                    }
+                    console.log("Slider: " + slider);
+                }
+		        if (userValue) {
+			        user = userValue;
+			        console.log("User value: " + user);
 		        }
 	        }
 	        
@@ -238,25 +231,29 @@ function handleRequest(intent) {
                 return Promise.reject(resourceData(request).ERROR_PLACE);
             }
             
-            return getRequest(reqType, action, intentName, place)
+            return getRequest(reqType, action, intentName, place, user)
                 .then(console.log("Sending cmd request"))
                 .then((c) => jeeQuery(reqType, c, slider, false))
 				.then(() => createResponse( resourceData(request).MULTIPLE_RESPONSES[Math.floor(Math.random() * resourceData(request).MULTIPLE_RESPONSES.length)] ));
         case "wallplug":
-            console.log("intent is = " + intentName);
             reqType = 'cmd';
 
 	        try {
-                let actionValue = intent.slots.OnOff.resolutions.resolutionsPerAuthority[0];
+                let actionValue = intent.slots.action.resolutions.resolutionsPerAuthority[0];
                 let placeValue = intent.slots.room.resolutions.resolutionsPerAuthority[0];
+                let userValue = intent.slots.user.value;
 
 		        if (actionValue.values) {
-			        action = actionValue.values[0].value.name;
-			        console.log("Action value = " + action);
+			        action = actionValue.values[0].value.id;
+			        console.log("Action value: " + action);
 		        }
 		        if (placeValue.values) {
 			        place = placeValue.values[0].value.name;
-			        console.log("Place value = " + place);
+			        console.log("Place value: " + place);
+		        }
+		        if (userValue) {
+			        user = userValue;
+			        console.log("User value: " + user);
 		        }
 	        }
 	        catch (err) {
@@ -269,24 +266,29 @@ function handleRequest(intent) {
                 return Promise.reject(resourceData(request).ERROR_PLACE);
             }
             
-            return getRequest(reqType, action, intentName, place)
+            return getRequest(reqType, action, intentName, place, user)
                 .then(console.log("Sending wallplug request"))
                 .then((c) => jeeQuery(reqType, c, slider, false))
 				.then(() => createResponse( resourceData(request).MULTIPLE_RESPONSES[Math.floor(Math.random() * resourceData(request).MULTIPLE_RESPONSES.length)] ));
         case "objects":
-            console.log("intent is = " + intentName);
             reqType = 'object';
 
 	        try {
-                let actionValue = intent.slots.OnOff.resolutions.resolutionsPerAuthority[0];
+                let actionValue = intent.slots.action.resolutions.resolutionsPerAuthority[0];
                 let placeValue = intent.slots.object.resolutions.resolutionsPerAuthority[0];
+                let userValue = intent.slots.user.value;
+                
 		        if (actionValue.values) {
-			        action = actionValue.values[0].value.name;
-			        console.log("Action value = " + action);
+			        action = actionValue.values[0].value.id;
+			        console.log("Action value: " + action);
 		        }
 		        if (placeValue.values) {
 			        place = placeValue.values[0].value.name;
-			        console.log("Place value = " + place);
+			        console.log("Place value: " + place);
+		        }
+		        if (userValue) {
+			        user = userValue;
+			        console.log("User value: " + user);
 		        }
 	        }
 	        catch (err) {
@@ -299,18 +301,17 @@ function handleRequest(intent) {
                 return Promise.reject(resourceData(request).ERROR_PLACE);
             }
             
-            return getRequest(reqType, action, intentName, place)
+            return getRequest(reqType, action, intentName, place, user)
                 .then(console.log("Sending object request"))
                 .then((c) => jeeQuery(reqType, c, slider, false))
 				.then(() => createResponse( resourceData(request).MULTIPLE_RESPONSES[Math.floor(Math.random() * resourceData(request).MULTIPLE_RESPONSES.length)] ));
         case "scenario":
-            console.log("scenario intent");
             reqType = 'scenario';
             
             try {
             	if (intent.slots.scenarioId.value) {
             		scenarioId = intent.slots.scenarioId.value;
-            		console.log("Scenario id = " + scenarioId);
+            		console.log("Scenario id: " + scenarioId);
             	}
             }
             catch (err) {
@@ -318,10 +319,10 @@ function handleRequest(intent) {
     		}
 
             try {
-                let actionValue = intent.slots.OnOff.resolutions.resolutionsPerAuthority[0];
+                let actionValue = intent.slots.action.resolutions.resolutionsPerAuthority[0];
 		        if (actionValue.values) {
-			        action = actionValue.values[0].value.name;
-			        console.log("Action value = " + action);
+			        action = actionValue.values[0].value.id;
+			        console.log("Action value: " + action);
 		        }
 	        }
 	        catch (err) {
@@ -333,19 +334,19 @@ function handleRequest(intent) {
                 .then((c) => jeeQuery(reqType, scenarioId, c, false))
 				.then(() => createResponse( resourceData(request).MULTIPLE_RESPONSES[Math.floor(Math.random() * resourceData(request).MULTIPLE_RESPONSES.length)] ));
         case "housemode":
-            console.log("housemode intent");
             reqType = 'housemode';
             
             try {
                 let actionValue = intent.slots.action.resolutions.resolutionsPerAuthority[0];
                 let modeValue = intent.slots.mode.resolutions.resolutionsPerAuthority[0];
+                
 		        if (actionValue.values) {
-			        action = actionValue.values[0].value.name;
-			        console.log("Action value = " + action);
+			        action = actionValue.values[0].value.id;
+			        console.log("Action value: " + action);
 		        }
 		        if (modeValue.values) {
 			        mode = modeValue.values[0].value.name;
-			        console.log("Mode value = " + mode);
+			        console.log("Mode value: " + mode);
 		        }
 	        }
 	        catch (err) {
