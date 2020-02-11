@@ -1,6 +1,6 @@
 
-![Version](https://img.shields.io/badge/Version-v1.1-brightgreen) ![MIT Licence](https://img.shields.io/badge/License-MIT-brightgreen)
-![NodeJS version](https://img.shields.io/badge/NodeJS-v8.10-green.svg) 
+![Version](https://img.shields.io/badge/Version-v1.2-brightgreen) ![MIT Licence](https://img.shields.io/badge/License-MIT-brightgreen)
+![NodeJS version](https://img.shields.io/badge/NodeJS-v10.x-green.svg) 
 <!--
 ![Dev status](https://img.shields.io/badge/status-development-orange.svg)
 -->
@@ -25,22 +25,26 @@ This skill is design for French and English languages. But it is possible to add
 -------------
 - Open Alexa Developer Console and Create Skill
 - Copy the file 'interaction-model.json' in JSON editor
-- You can change or add utterrances, actions in action slot or places in place slot
+- Adapt sentences for English or French.
+- You can change or add utterrances, actions in action slot, places in place slot...
 - Save
+- Build the model
 - Open AWS Developer console
 - Create an empty lambda function
-- Select Execution : Node.js 8.10
+- Select Execution : Node.js 10.x
 - Download the zip from this repository in the Amazon Developer Console
 - Add the Alexa Skill kit trigger and set it up with the Alexa Skill ID
 - Enter the AWS ID in the Alexa console
-- Build the model
-- Add your Jeedom configuration to 'config.js' file. Adapt sentences for English or French
+- Add your Jeedom configuration to 'config.js' file.
 
 **Capabilities**
 -------------
 You can ask Alexa to invoke Jeedom API methods:
 - Scenario: start, stop, active, deactive
 - Command: turn on, turn off, open, close, slider (%), status
+- Objects : you can ask for objects actions (charging toothbrush, mow the lawn...)
+- House mode : you can ask for your house mode (manual, day, night, guest, alarm...)
+
 
 Objects supported:
 - Lights
@@ -50,6 +54,7 @@ Objects supported:
 - Curtains
 - Shutters
 
+
 **Usage**
 -------------
 Invoke the skill (skill name : Devialet):
@@ -58,7 +63,7 @@ Invoke the skill (skill name : Devialet):
 
 Command examples:
 - Tell Alexa "Alexa open Devialet" (Devialet is the skill invocation name) and tell "turn on the light of the kitchen"
-- Or, tell "Alexa ask Devialet to turn on the light of the kitchen"
+- Or "Alexa ask Devialet to turn on the light of the kitchen"
 - "Alexa ask Devialet to open the shutter of the kitchen"
 - "Alexa ask Devialet to put the kitchen shutter at 40 %"
 
@@ -74,6 +79,8 @@ Example:
 - "Alexa ask Devialet to start scenario 4"
 - "Alexa ask Devialet to active scenario 2"
 
+In the config.js you need to associate the id to the Jeedom scenario id.
+
 ***Use for roller shutters - curtains - windows***
 
 To control the shutters, 3 or 4 elements are important to give to Alexa: 
@@ -86,6 +93,8 @@ Examples:
 - To open the shutters, ask Alexa "Alexa ask Devialet to open the shutters of the living room".
 - To position the roller shutter at a certain percentage, then ask "Alexa ask Devialet to set the shutter at 20%".
 
+In the config.js you need to associate the object commands ids, and if you want for information the id to the Jeedom object Node ID.
+
 ***Use for lights***
 
 To control the lights, 3 elements are important to give to Alexa: 
@@ -95,6 +104,9 @@ To control the lights, 3 elements are important to give to Alexa:
 
 Examples: 
 - "Alexa ask Devialet to turn on the light in the living room"
+- "Alexa ask Devialet to turn on the light in the Jack's room"
+
+In the config.js you need to associate the object commands ids.
 
 ***Use for wallplugs***
 
@@ -105,6 +117,9 @@ To control the wallplugs, 3 elements are important to give to Alexa:
 
 Examples: 
 - "Alexa ask Devialet to turn on the wall plug of the living room"
+- "Alexa ask Devialet to turn on the wall plug in the Jack's room"
+
+In the config.js you need to associate the object commands ids.
 
 ***Use for objects***
 
@@ -116,5 +131,22 @@ To control objects, 3 elements are important to give to Alexa:
 Examples: 
 - "Alexa ask Devialet to mow the lawn"
 - "Alexa ask Devialet to charge my toothbrush"
+- "Alexa ask Devialet to charge Charlotte's toothbrush"
 - "Alexa ask Devialet to stop charging my toothbrush"
 
+In the config.js you need to associate the object commands ids, and associate Jeedom object to a room and wallplug.
+
+***Use for housemode***
+
+You need to install Virtual plugin.
+Create virtual commands with what you want (manual, day, night, alarm, guest...) and create 1 or more scenario for all modes.
+
+3 elements are important to give to Alexa: 
+- the request to Freebox Devialet
+- the action (activate, deactive (then return to manual mode))
+- the name of the mode (manual, day, night, alarm, hollidays...)
+
+Examples: 
+- "Alexa ask Devialet to activate the night mode"
+
+In the config.js you need to associate the Virtual commands ids.
