@@ -31,7 +31,7 @@ This skill is design for French and English languages. But it is possible to add
 - Save
 - Build the model
 - Open AWS Developer console
-- Choose Irelande (EU-West-1) to use Alexa Skill
+- Choose Ireland (EU-West-1) to use Alexa Skill
 - Create an empty lambda function
 - Select Execution : Node.js 10.x
 - Download the zip from this repository in the Amazon Developer Console
