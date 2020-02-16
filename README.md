@@ -43,7 +43,7 @@ This skill is design for French and English languages. But it is possible to add
 -------------
 You can ask Alexa to invoke Jeedom API methods:
 - Scenario: start, stop, active, deactive
-- Command: turn on, turn off, open, close, slider (%), status
+- Command: turn on, turn off, open, close, slider (%)
 - Objects : you can ask for objects actions (charging toothbrush, mow the lawn...)
 - House mode : you can ask for your house mode (manual, day, night, guest, alarm...)
 
