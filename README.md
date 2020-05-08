@@ -24,24 +24,26 @@ This skill is design for French and English languages. But it is possible to add
 **Getting started**
 -------------
 - Open Alexa Developer Console and Create Skill
-- Copy the file 'interaction-model.json' in JSON editor
+- Choose your name, don't change the option 1 and 2 
+- Edit your skill and copy the file 'interaction-model.json' in JSON editor
 - Adapt sentences for English or French.
 - You can change or add utterrances, actions in action slot, places in place slot...
 - Save
 - Build the model
 - Open AWS Developer console
+- Choose Ireland (EU-West-1) to use Alexa Skill
 - Create an empty lambda function
 - Select Execution : Node.js 10.x
 - Download the zip from this repository in the Amazon Developer Console
-- Add the Alexa Skill kit trigger and set it up with the Alexa Skill ID
-- Enter the AWS ID in the Alexa console
+- Add the Alexa Skill kit trigger and set it up with the Alexa Skill ID (Endpoint in the left menu)
+- Copy the AWS ID (ARN at the top rightof the page) and paste in the Alexa console
 - Add your Jeedom configuration to 'config.js' file.
 
 **Capabilities**
 -------------
 You can ask Alexa to invoke Jeedom API methods:
 - Scenario: start, stop, active, deactive
-- Command: turn on, turn off, open, close, slider (%), status
+- Command: turn on, turn off, open, close, slider (%)
 - Objects : you can ask for objects actions (charging toothbrush, mow the lawn...)
 - House mode : you can ask for your house mode (manual, day, night, guest, alarm...)
 
