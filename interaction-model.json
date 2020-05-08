@@ -65,6 +65,9 @@
                         }
                     ],
                     "samples": [
+                        "{action} l' {room}",
+                        "{action} le {room}",
+                        "{action} la {room}",
                         "{action} la porte de la {room} d' {user}",
                         "{action} la porte de la {room} de {user}",
                         "{action} la porte de l' {room}",
@@ -119,15 +122,15 @@
                             "type": "AMAZON.FirstName"
                         },
                         {
-                            "name": "percent",
+                            "name": "slider",
                             "type": "AMAZON.NUMBER"
                         }
                     ],
                     "samples": [
-                        "{action} les fenêtres de la {room} d' {user} à {percent} pourcent",
-                        "{action} les fenêtres de la {room} de {user} à {percent} pourcent",
-                        "{action} la fenêtre de la {room} d' {user} à {percent} pourcent",
-                        "{action} la fenêtre de la {room} de {user} à {percent} pourcent",
+                        "{action} les fenêtres de la {room} d' {user} à {slider} pourcent",
+                        "{action} les fenêtres de la {room} de {user} à {slider} pourcent",
+                        "{action} la fenêtre de la {room} d' {user} à {slider} pourcent",
+                        "{action} la fenêtre de la {room} de {user} à {slider} pourcent",
                         "{action} les fenêtres de la {room} d' {user}",
                         "{action} les fenêtres de la {room} de {user}",
                         "{action} la fenêtre de la {room} d' {user}",
@@ -153,6 +156,7 @@
                         }
                     ],
                     "samples": [
+                        "{action} le scénario {scenarioId}",
                         "{action} le scenario {scenarioId}"
                     ]
                 },
@@ -194,25 +198,25 @@
                             "type": "AMAZON.FirstName"
                         },
                         {
-                            "name": "percent",
+                            "name": "slider",
                             "type": "AMAZON.NUMBER"
                         }
                     ],
                     "samples": [
-                        "{action} le rideau de la {room} d' {user} à {percent} pourcent",
-                        "{action} le rideau de la {room} de {user} à {percent} pourcent",
-                        "{action} les rideaux de la {room} d' {user} à {percent} pourcent",
-                        "{action} les rideaux de la {room} de {user} à {percent} pourcent",
+                        "{action} le rideau de la {room} d' {user} à {slider} pourcent",
+                        "{action} le rideau de la {room} de {user} à {slider} pourcent",
+                        "{action} les rideaux de la {room} d' {user} à {slider} pourcent",
+                        "{action} les rideaux de la {room} de {user} à {slider} pourcent",
                         "{action} le rideau de la {room} d' {user}",
                         "{action} le rideau de la {room} de {user}",
                         "{action} les rideaux de la {room} d' {user}",
                         "{action} les rideaux de la {room} de {user}",
-                        "{action} les rideaux du {room} à {percent} pourcent",
-                        "{action} les rideaux de l' {room} à {percent} pourcent",
-                        "{action} les rideaux de la {room} à {percent} pourcent",
-                        "{action} le rideau du {room} à {percent} pourcent",
-                        "{action} le rideau de l' {room} à {percent} pourcent",
-                        "{action} le rideau de la {room} à {percent} pourcent",
+                        "{action} les rideaux du {room} à {slider} pourcent",
+                        "{action} les rideaux de l' {room} à {slider} pourcent",
+                        "{action} les rideaux de la {room} à {slider} pourcent",
+                        "{action} le rideau du {room} à {slider} pourcent",
+                        "{action} le rideau de l' {room} à {slider} pourcent",
+                        "{action} le rideau de la {room} à {slider} pourcent",
                         "{action} les rideaux du {room}",
                         "{action} les rideaux de l' {room}",
                         "{action} les rideaux de la {room}",
