@@ -20,6 +20,7 @@ let fr = {
     ERROR: 'Désolé il y a eu une erreur',
     ERROR_ACTION: 'Désolé je n\'ai pas compris l\'action',
     ERROR_PLACE: 'Désolé je n\'ai pas compris l\'emplacement',
+    ERROR_VALUE: "Désolé il y a eu un problème avec la valeur que vous souhaitez paramétrer",
     ERROR_ACTION_SCENARIO: 'Désolé l\'action n\'a pas été trouvée. Vous pouvez demander stoppe, arrête, lance, exécute, démarre, active, désactive.',
     ERROR_SCENARIO_ID: 'Désolé le scenario n\'a pa été trouvé',
     MULTIPLE_RESPONSES: ["oui", "très bien", "je m\'en occupe"]
@@ -33,6 +34,7 @@ let en = {
     ERROR: 'Sorry there was something wrong',
     ERROR_ACTION: 'Sorry i did not understand the action',
     ERROR_PLACE: 'Sorry i did not understand the place',
+    ERROR_VALUE: 'Sorry, there was a problem with the value you want to set',
     ERROR_ACTION_SCENARIO: 'Sorry the action wasn\'t found. You can request stop, stop, start, run, execute, start, enable, disable.',
     ERROR_SCENARIO_ID: 'Sorry i did not find the scenario',
     MULTIPLE_RESPONSES: ["yes", "ok", "I will handle it"]
@@ -204,15 +206,17 @@ function handleRequest(intent) {
 		        if (placeValue.values) {
 			        place = placeValue.values[0].value.name;
 			        console.log("Place value: " + place);
-		        }
-		        if (sliderValue) {
-                    if (action !== "set") {
+                }
+                if (action == "set") {
+		            if (sliderValue) {
                         if (action == "close") {
                             slider = 100-sliderValue;
                         } else {
                             slider = sliderValue;
                         }
                         action = "set";
+                    } else {
+                        return Promise.reject(resourceData(request).ERROR_VALUE);
                     }
                     console.log("Slider: " + slider);
                 }
