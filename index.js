@@ -54,12 +54,10 @@ let globalResourceData = {
 
 function resourceData(request) {
     let DEFAULT_LOCALE = 'fr-FR';
-    if (request !== undefined && request.locale !== undefined) {
-        var locale = request.locale;
-    }
-    else {
-        var locale = DEFAULT_LOCALE;
-    }
+    var locale = (request !== undefined && request.locale !== undefined)
+        ? request.locale
+        : DEFAULT_LOCALE
+
     return globalResourceData[locale];
 }
 
@@ -176,14 +174,24 @@ function handleRequest(intent) {
     
     console.log("Handle request");
     let intentName = intent.name;
-    let action = null;
-    let place = null;
-    let slider = null;
-    let user = null;
-    let scenarioId = null;
-    let mode = null;
     let reqType = null;
     
+    let action = intent.slots.action.resolutions.resolutionsPerAuthority[0].values
+        ? intent.slots.action.resolutions.resolutionsPerAuthority[0].values[0].value.id
+        : null
+    let place = intent.slots.room.resolutions.resolutionsPerAuthority[0].values
+        ? intent.slots.room.resolutions.resolutionsPerAuthority[0].values[0].value.name
+        : null
+    let user = intent.slots.user.value
+        ? intent.slots.user.value
+        : null
+    let mode = intent.slots.mode.resolutions.resolutionsPerAuthority[0].values
+        ? intent.slots.mode.resolutions.resolutionsPerAuthority[0].values[0].value.name
+        : null
+    let scenarioId = intent.slots.scenarioId.value
+        ? intent.slots.scenarioId.value
+        : null
+
     console.log("Intent is " + intentName);
     switch (intentName) {
         case "light":
@@ -194,19 +202,17 @@ function handleRequest(intent) {
             reqType = 'cmd';
 
 	        try {
-                let actionValue = intent.slots.action.resolutions.resolutionsPerAuthority[0];
-                let placeValue = intent.slots.room.resolutions.resolutionsPerAuthority[0];
+                console.log("Action value: " + action);
+                console.log("Place value: " + place);
+                console.log("User value: " + user);
+                
+                // met le volet à du burea 40%
+                // ouvre le volet du bureau à 40%
+                // ferme le volet du bureau à 40%
+                // ferme/ouvre le volet du bureau
+                // null error
+
                 let sliderValue = intent.slots.slider.value;
-                let userValue = intent.slots.user.value;
-    
-		        if (actionValue.values) {
-			        action = actionValue.values[0].value.id;
-			        console.log("Action value: " + action);
-		        }
-		        if (placeValue.values) {
-			        place = placeValue.values[0].value.name;
-			        console.log("Place value: " + place);
-                }
                 if (action == "set") {
 		            if (sliderValue) {
                         if (action == "close") {
@@ -220,10 +226,6 @@ function handleRequest(intent) {
                     }
                     console.log("Slider: " + slider);
                 }
-		        if (userValue) {
-			        user = userValue;
-			        console.log("User value: " + user);
-		        }
 	        }
 	        
 	        catch (err) {
@@ -243,22 +245,9 @@ function handleRequest(intent) {
             reqType = 'cmd';
 
 	        try {
-                let actionValue = intent.slots.action.resolutions.resolutionsPerAuthority[0];
-                let placeValue = intent.slots.room.resolutions.resolutionsPerAuthority[0];
-                let userValue = intent.slots.user.value;
-
-		        if (actionValue.values) {
-			        action = actionValue.values[0].value.id;
-			        console.log("Action value: " + action);
-		        }
-		        if (placeValue.values) {
-			        place = placeValue.values[0].value.name;
-			        console.log("Place value: " + place);
-		        }
-		        if (userValue) {
-			        user = userValue;
-			        console.log("User value: " + user);
-		        }
+                console.log("Action value: " + action);
+                console.log("Place value: " + place);
+                console.log("User value: " + user);
 	        }
 	        catch (err) {
 		        return Promise.reject(resourceData(request).ERROR);
@@ -278,22 +267,9 @@ function handleRequest(intent) {
             reqType = 'object';
 
 	        try {
-                let actionValue = intent.slots.action.resolutions.resolutionsPerAuthority[0];
-                let placeValue = intent.slots.object.resolutions.resolutionsPerAuthority[0];
-                let userValue = intent.slots.user.value;
-                
-		        if (actionValue.values) {
-			        action = actionValue.values[0].value.id;
-			        console.log("Action value: " + action);
-		        }
-		        if (placeValue.values) {
-			        place = placeValue.values[0].value.name;
-			        console.log("Place value: " + place);
-		        }
-		        if (userValue) {
-			        user = userValue;
-			        console.log("User value: " + user);
-		        }
+                console.log("Action value: " + action);
+                console.log("Place value: " + place);
+                console.log("User value: " + user);
 	        }
 	        catch (err) {
 		        return Promise.reject(resourceData(request).ERROR);
@@ -313,21 +289,14 @@ function handleRequest(intent) {
             reqType = 'scenario';
             
             try {
-            	if (intent.slots.scenarioId.value) {
-            		scenarioId = intent.slots.scenarioId.value;
-            		console.log("Scenario id: " + scenarioId);
-            	}
+                console.log("Scenario id: " + scenarioId);
             }
             catch (err) {
             	return Promise.reject(resourceData(request).ERROR_SCENARIO_ID);
     		}
 
             try {
-                let actionValue = intent.slots.action.resolutions.resolutionsPerAuthority[0];
-		        if (actionValue.values) {
-			        action = actionValue.values[0].value.id;
-			        console.log("Action value: " + action);
-		        }
+                console.log("Action value: " + action);
 	        }
 	        catch (err) {
 		        return Promise.reject(resourceData(request).ERROR_ACTION_SCENARIO);
@@ -341,17 +310,8 @@ function handleRequest(intent) {
             reqType = 'housemode';
             
             try {
-                let actionValue = intent.slots.action.resolutions.resolutionsPerAuthority[0];
-                let modeValue = intent.slots.mode.resolutions.resolutionsPerAuthority[0];
-                
-		        if (actionValue.values) {
-			        action = actionValue.values[0].value.id;
-			        console.log("Action value: " + action);
-		        }
-		        if (modeValue.values) {
-			        mode = modeValue.values[0].value.name;
-			        console.log("Mode value: " + mode);
-		        }
+                console.log("Action value: " + action);
+                console.log("Mode value: " + mode);
 	        }
 	        catch (err) {
 		        return Promise.reject(resourceData(request).ERROR_ACTION_SCENARIO);
