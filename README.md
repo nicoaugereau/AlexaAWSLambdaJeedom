@@ -6,7 +6,7 @@
 -->
 
 
-# Alexa AWS Lambda assistant for Jeedom
+# Alexa assistant for Jeedom
 
 This repository allows you to control home automation objects with Alexa (Freebox Devialet, Echo, Dot, Alexa for iPhone or Android) with AWS Lambda and Jeedom installed on a raspberry. 
 You can ask for object (light, door, wallplug, shutter, curtain, window), ask for a scenario id, or a home mode.
