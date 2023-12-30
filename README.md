@@ -1,6 +1,6 @@
 
 ![Version](https://img.shields.io/badge/Version-v1.2-brightgreen) ![MIT Licence](https://img.shields.io/badge/License-MIT-brightgreen)
-![NodeJS version](https://img.shields.io/badge/NodeJS-v12.x-green.svg) 
+![NodeJS version](https://img.shields.io/badge/NodeJS-v20.x-green.svg) 
 <!--
 ![Dev status](https://img.shields.io/badge/status-development-orange.svg)
 -->
