@@ -1,0 +1,14 @@
+{
+    "WELCOME": "Welcome to Freebox Devialet Assistant",
+    "WHAT_DO_YOU_WANT": "What did you want to say?",
+    "UNHANDLED": "Sorry this skill is not supported.",
+    "HELP": "Sorry I couldn't answer your request. You can ask me for example: Alexa asks Devialet to turn on the kitchen light, or closes the living room shutter, or lowers the bedroomm shutter to 20%.",
+    "STOP": "Bye! Thanks for using the Freebox Devialet Assistant!",
+    "ERROR": "Sorry there was something wrong",
+    "ERROR_ACTION": "Sorry i did not understand the action",
+    "ERROR_PLACE": "Sorry i did not understand the place",
+    "ERROR_VALUE": "Sorry, there was a problem with the value you want to set",
+    "ERROR_ACTION_SCENARIO": "Sorry the action wasn't found. You can request stop, stop, start, run, execute, start, enable, disable.",
+    "ERROR_SCENARIO_ID": "Sorry i did not find the scenario",
+    "MULTIPLE_RESPONSES": ["yes", "ok", "I will handle it"]
+}

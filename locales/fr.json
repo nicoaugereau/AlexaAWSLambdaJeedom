@@ -1,0 +1,14 @@
+{
+    "WELCOME": "Bienvenue sur l'assistant Freebox Devialet",
+    "WHAT_DO_YOU_WANT": "Que vouliez-vous dire ?",
+    "UNHANDLED": "Désolé cette skill n'est pas prise en charge.",
+    "HELP": "Désolé je n'ai pas pu répondre à votre demande. Vous pouvez me demander par exemple : Alexa demande à Devialet d'allumer la lumière de la cuisine, ou fermer le volet du salon, ou encore mettre le volet de la chambre à 20%.",
+    "STOP": "Au revoir. Merci pour avoir utilisé l'assistant Freebox Devialet !",
+    "ERROR": "Désolé il y a eu une erreur",
+    "ERROR_ACTION": "Désolé je n'ai pas compris l'action",
+    "ERROR_PLACE": "Désolé je n'ai pas compris l'emplacement",
+    "ERROR_VALUE": "Désolé il y a eu un problème avec la valeur que vous souhaitez paramétrer",
+    "ERROR_ACTION_SCENARIO": "Désolé l'action n'a pas été trouvée. Vous pouvez demander stoppe, arrête, lance, exécute, démarre, active, désactive.",
+    "ERROR_SCENARIO_ID": "Désolé le scenario n'a pa été trouvé",
+    "MULTIPLE_RESPONSES": ["oui", "très bien", "je m'en occupe"]
+}

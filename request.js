@@ -1,24 +1,22 @@
-'use strict';
-
-const querystring = require('querystring'); 
-const https = require('https');
+const { stringify } = require('querystring');
+const { Agent, request } = require('https');
 
 /**
  * Send an HTTPS request and receive a response
  */
-module.exports = function request(opts, queryParams) {
+module.exports = function httpsJeedom(opts, queryParams) {
 	return new Promise((resolve, reject) => {
 
-		var postData = querystring.stringify(queryParams);
+		var postData = stringify(queryParams);
 
 		opts.method = 'POST';
 		opts.headers = {
 			'Content-Type': 'application/x-www-form-urlencoded',
 			'Content-Length': postData.length
 		};
-		opts.agent = new https.Agent({keepAlive: true});
+		opts.agent = new Agent({keepAlive: true});
 
-		const req = https.request(opts, (res) => {
+		const req = request(opts, (res) => {
 			let body = '';
 			res.on('data', (d) => {
 				body += d;
@@ -32,7 +30,7 @@ module.exports = function request(opts, queryParams) {
 				return reject(err);
 			});
 		});
-		
+
 		req.on('error', (err) => {
 			return reject(err);
 		});
