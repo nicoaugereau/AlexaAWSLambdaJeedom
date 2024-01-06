@@ -6,7 +6,7 @@
 -->
 
 
-# Alexa AWS Lambda assistant for Jeedom
+# Alexa assistant for Jeedom
 
 This repository allows you to control your Jeedom objects with Alexa. It works with Freebox Devialet, Echo, Dot, Alexa for iPhone or Android.
 
