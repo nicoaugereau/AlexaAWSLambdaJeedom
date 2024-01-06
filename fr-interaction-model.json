@@ -24,7 +24,7 @@
                     "slots": [
                         {
                             "name": "room",
-                            "type": "place"
+                            "type": "places"
                         },
                         {
                             "name": "action",
@@ -33,19 +33,23 @@
                         {
                             "name": "user",
                             "type": "AMAZON.FirstName"
+                        },
+                        {
+                            "name": "lights",
+                            "type": "lights"
                         }
                     ],
                     "samples": [
-                        "{action} les lumières de la {room} d' {user}",
-                        "{action} les lumières de la {room} de {user}",
-                        "{action} la lumière de la {room} d' {user}",
-                        "{action} la lumière de la {room} de {user}",
-                        "{action} les lumières de l' {room}",
-                        "{action} la lumière de l' {room}",
-                        "{action} les lumières de la {room}",
-                        "{action} la lumière de la {room}",
-                        "{action} les lumières du {room}",
-                        "{action} la lumière du {room}"
+                        "{action} les {lights} de l' {room}",
+                        "{action} la {lights} de l' {room}",
+                        "{action} la {lights} du {room} ",
+                        "{action} les {lights} du {room} ",
+                        "{action} la {lights} de la {room} ",
+                        "{action} les {lights} de la {room} ",
+                        "{action} la {lights} de la {room} de {user}",
+                        "{action} la {lights} de la {room} d' {user}",
+                        "{action} les {lights} de la {room} de {user}",
+                        "{action} les {lights} de la {room} d' {user}"
                     ]
                 },
                 {
@@ -57,7 +61,7 @@
                         },
                         {
                             "name": "room",
-                            "type": "place"
+                            "type": "places"
                         },
                         {
                             "name": "user",
@@ -86,7 +90,7 @@
                         },
                         {
                             "name": "room",
-                            "type": "place"
+                            "type": "places"
                         },
                         {
                             "name": "user",
@@ -94,6 +98,7 @@
                         }
                     ],
                     "samples": [
+                        "{action} la prise {room}",
                         "{action} les prises de la {room} d' {user}",
                         "{action} les prises de la {room} de {user}",
                         "{action} la prise de la {room} d' {user}",
@@ -115,7 +120,7 @@
                         },
                         {
                             "name": "room",
-                            "type": "place"
+                            "type": "places"
                         },
                         {
                             "name": "user",
@@ -127,6 +132,10 @@
                         }
                     ],
                     "samples": [
+                        "{action} les fenêtres de la {room} d' {user} à {slider} pour cent",
+                        "{action} les fenêtres de la {room} de {user} à {slider} pour cent",
+                        "{action} la fenêtre de la {room} d' {user} à {slider} pour cent",
+                        "{action} la fenêtre de la {room} de {user} à {slider} pour cent",
                         "{action} les fenêtres de la {room} d' {user} à {slider} pourcent",
                         "{action} les fenêtres de la {room} de {user} à {slider} pourcent",
                         "{action} la fenêtre de la {room} d' {user} à {slider} pourcent",
@@ -161,11 +170,11 @@
                     ]
                 },
                 {
-                    "name": "housemode",
+                    "name": "mode",
                     "slots": [
                         {
-                            "name": "mode",
-                            "type": "mode"
+                            "name": "modes",
+                            "type": "modes"
                         },
                         {
                             "name": "action",
@@ -177,9 +186,9 @@
                         }
                     ],
                     "samples": [
-                        "{action} l' {housing} en mode {mode}",
-                        "{action} la {housing} en mode {mode}",
-                        "{action} le mode {mode}"
+                        "{action} l' {housing} en mode {modes}",
+                        "{action} la {housing} en mode {modes}",
+                        "{action} le mode {modes}"
                     ]
                 },
                 {
@@ -191,7 +200,7 @@
                         },
                         {
                             "name": "room",
-                            "type": "place"
+                            "type": "places"
                         },
                         {
                             "name": "user",
@@ -203,6 +212,16 @@
                         }
                     ],
                     "samples": [
+                        "{action} le rideau de la {room} d' {user} à {slider} pour cent",
+                        "{action} le rideau de la {room} de {user} à {slider} pour cent",
+                        "{action} les rideaux de la {room} d' {user} à {slider} pour cent",
+                        "{action} les rideaux de la {room} de {user} à {slider} pour cent",
+                        "{action} les rideaux du {room} à {slider} pour cent",
+                        "{action} les rideaux de l' {room} à {slider} pour cent",
+                        "{action} les rideaux de la {room} à {slider} pour cent",
+                        "{action} le rideau du {room} à {slider} pour cent",
+                        "{action} le rideau de l' {room} à {slider} pour cent",
+                        "{action} le rideau de la {room} à {slider} pour cent",
                         "{action} le rideau de la {room} d' {user} à {slider} pourcent",
                         "{action} le rideau de la {room} de {user} à {slider} pourcent",
                         "{action} les rideaux de la {room} d' {user} à {slider} pourcent",
@@ -234,7 +253,7 @@
                         },
                         {
                             "name": "room",
-                            "type": "place"
+                            "type": "places"
                         },
                         {
                             "name": "slider",
@@ -246,6 +265,16 @@
                         }
                     ],
                     "samples": [
+                        "{action} les volets de la {room} de {user} à {slider} pour cent",
+                        "{action} les volets de la {room} d' {user} à {slider} pour cent",
+                        "{action} le volet de la {room} d' {user} à {slider} pour cent",
+                        "{action} le volet de la {room} de {user} à {slider} pour cent",
+                        "{action} les volets de l' {room} à {slider} pour cent",
+                        "{action} les volets de la {room} à {slider} pour cent",
+                        "{action} les volets du {room} à {slider} pour cent",
+                        "{action} le volet de la {room} à {slider} pour cent",
+                        "{action} le volet de l' {room} à {slider} pour cent",
+                        "{action} le volet du {room} à {slider} pour cent",
                         "{action} les volets de la {room} de {user} à {slider} pourcent",
                         "{action} les volets de la {room} d' {user} à {slider} pourcent",
                         "{action} les volets de la {room} de {user}",
@@ -269,11 +298,11 @@
                     ]
                 },
                 {
-                    "name": "objects",
+                    "name": "object",
                     "slots": [
                         {
-                            "name": "object",
-                            "type": "object"
+                            "name": "objects",
+                            "type": "objects"
                         },
                         {
                             "name": "user",
@@ -289,17 +318,17 @@
                         }
                     ],
                     "samples": [
-                        "{action} la {object} d' {user}",
-                        "{action} de {addition} de {object}",
-                        "{action} la {addition} de {object}",
-                        "{action} l' {addition} de {object}",
-                        "{action} le {addition} de {object}",
-                        "{action} la {object} de {user}",
-                        "{action} le {object} de {user}",
-                        "{action} ma {object}",
-                        "{action} mon {object}",
-                        "{action} la {object}",
-                        "{action} le {object}"
+                        "{action} la {objects} d' {user}",
+                        "{action} de {addition} de {objects}",
+                        "{action} la {addition} de {objects}",
+                        "{action} l' {addition} de {objects}",
+                        "{action} le {addition} de {objects}",
+                        "{action} la {objects} de {user}",
+                        "{action} le {objects} de {user}",
+                        "{action} ma {objects}",
+                        "{action} mon {objects}",
+                        "{action} la {objects}",
+                        "{action} le {objects}"
                     ]
                 }
             ],
@@ -331,6 +360,7 @@
                             "name": {
                                 "value": "charge",
                                 "synonyms": [
+                                    "chargez",
                                     "chargement",
                                     "recharge",
                                     "recharger",
@@ -352,6 +382,7 @@
                             "name": {
                                 "value": "mets",
                                 "synonyms": [
+                                    "mettez",
                                     "mettre"
                                 ]
                             }
@@ -361,6 +392,7 @@
                             "name": {
                                 "value": "désactive",
                                 "synonyms": [
+                                    "désactivez",
                                     "désactiver"
                                 ]
                             }
@@ -370,6 +402,7 @@
                             "name": {
                                 "value": "active",
                                 "synonyms": [
+                                    "activez",
                                     "activer"
                                 ]
                             }
@@ -379,6 +412,7 @@
                             "name": {
                                 "value": "exécute",
                                 "synonyms": [
+                                    "exécutez",
                                     "lance",
                                     "démarrer",
                                     "lancer",
@@ -392,6 +426,7 @@
                             "name": {
                                 "value": "stoppe",
                                 "synonyms": [
+                                    "stoppez",
                                     "stopper",
                                     "arrêter",
                                     "arrête"
@@ -403,6 +438,7 @@
                             "name": {
                                 "value": "ferme",
                                 "synonyms": [
+                                    "fermez",
                                     "baisser",
                                     "baisse",
                                     "fermeture",
@@ -415,6 +451,7 @@
                             "name": {
                                 "value": "ouvre",
                                 "synonyms": [
+                                    "ouvrez",
                                     "monter",
                                     "monte",
                                     "ouverture",
@@ -427,6 +464,7 @@
                             "name": {
                                 "value": "éteins",
                                 "synonyms": [
+                                    "éteignez",
                                     "éteindre"
                                 ]
                             }
@@ -436,6 +474,7 @@
                             "name": {
                                 "value": "allume",
                                 "synonyms": [
+                                    "allumez",
                                     "allumer"
                                 ]
                             }
@@ -443,8 +482,21 @@
                     ]
                 },
                 {
-                    "name": "place",
+                    "name": "places",
                     "values": [
+                        {
+                            "name": {
+                                "value": "terrasse"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "extérieur",
+                                "synonyms": [
+                                    "extérieure"
+                                ]
+                            }
+                        },
                         {
                             "name": {
                                 "value": "chambre d'amis"
@@ -561,8 +613,14 @@
                     ]
                 },
                 {
-                    "name": "mode",
+                    "name": "modes",
                     "values": [
+                        {
+                            "id": "monitoring",
+                            "name": {
+                                "value": "surveillance"
+                            }
+                        },
                         {
                             "id": "standard",
                             "name": {
@@ -650,8 +708,23 @@
                     ]
                 },
                 {
-                    "name": "object",
+                    "name": "objects",
                     "values": [
+                        {
+                            "name": {
+                                "value": "box tv"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "appareil"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "aspirateur"
+                            }
+                        },
                         {
                             "name": {
                                 "value": "tondeuse à barbe"
@@ -726,6 +799,32 @@
                             "id": "house",
                             "name": {
                                 "value": "maison"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "lights",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "plafonnier"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "lampe",
+                                "synonyms": [
+                                    "lampes"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "lumière",
+                                "synonyms": [
+                                    "lumières"
+                                ]
                             }
                         }
                     ]

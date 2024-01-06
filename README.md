@@ -1,6 +1,6 @@
 
-![Version](https://img.shields.io/badge/Version-v1.2-brightgreen) ![MIT Licence](https://img.shields.io/badge/License-MIT-brightgreen)
-![NodeJS version](https://img.shields.io/badge/NodeJS-v12.x-green.svg) 
+![Version](https://img.shields.io/badge/Version-v1.3-brightgreen) ![MIT Licence](https://img.shields.io/badge/License-MIT-brightgreen)
+![NodeJS version](https://img.shields.io/badge/NodeJS-v20.x-green.svg) 
 <!--
 ![Dev status](https://img.shields.io/badge/status-development-orange.svg)
 -->
@@ -8,10 +8,16 @@
 
 # Alexa AWS Lambda assistant for Jeedom
 
-This repository allows you to control home automation objects with Alexa (Freebox Devialet, Echo, Dot, Alexa for iPhone or Android) with AWS Lambda and Jeedom installed on a raspberry. 
-You can ask for object (light, door, wallplug, shutter, curtain, window), ask for a scenario id, or a home mode.
+This repository allows you to control your Jeedom objects with Alexa. It works with Freebox Devialet, Echo, Dot, Alexa for iPhone or Android.
+
+You can ask for : 
+- object (light, door, wallplug, shutter, curtain, window)
+- a scenario id
+- home mode (with a virtual for example)
 
 This skill is design for French and English languages. But it is possible to add many others.
+
+You have an interaction model (French) example in the repository. You can import the content in the Alexa console, and can change the intent name.
 
 **Prerequisites**
 -------------
